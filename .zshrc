@@ -38,7 +38,6 @@ alias soz='source ~/.zshrc'
 
 # Misc
 alias vim='/opt/local/bin/vim'
-alias irc='ssh -p1010 -i ~/.ssh/id_rsa_valera dmitry@80.167.101.22 -t "tmux attach-session -dt irc"'
 alias verdure='mplayer http://air.verdure.ru:8881/'
 alias cliqhop='mplayer -playlist http://somafm.com/cliqhop.pls'
 alias rutr='/Users/dmitree/dev/repos/google-translate-cli/translate {=ru}'
