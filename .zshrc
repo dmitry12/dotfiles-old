@@ -47,7 +47,6 @@ alias tempmonitor='/Applications/TemperatureMonitor.app/Contents/MacOS/tempmonit
 alias grep='ggrep'
 alias sed='gsed'
 
-# Alright, this russian support seems to work so far
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
