@@ -97,6 +97,9 @@ NeoBundle 'gavinbeatty/dragvisuals.vim'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'matrix.vim'
 NeoBundle 'rails.vim'
+NeoBundle 'd11wtq/tomorrow-theme-vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'joonty/vim-phpqa'
 
 call neobundle#end()
 
@@ -107,14 +110,14 @@ NeoBundleCheck
 set background=dark
 "set background=light
 
-colorscheme solarized
+colorscheme Tomorrow-Night-Bright
 
 if has("gui_running")
-	set guioptions-=T
-	set guioptions+=e
-	set guitablabel=%M\ %t
-	set background=light
-	set guifont=Monaco:h14
+    set guioptions-=T
+    set guioptions+=e
+    set guitablabel=%M\ %t
+    set background=light
+    set guifont=Monaco:h14
 endif
 let g:tmux_navigator_no_mappings = 1
 
@@ -214,10 +217,13 @@ au FileType ruby setl sw=2 sts=2 et
 
 au BufRead,BufNewFile *.phtml map <leader>d <Esc>i<pre><?php var_dump(); die;?><Esc>F)i
 au BufRead,BufNewFile *.phtml setlocal filetype=html smartindent
-
 "set shiftwidth=2
 "set tabstop=2
 "set expandtab
-
 autocmd VimResized * :wincmd =
 nmap Y y$
+
+let g:phpqa_messdetector_autorun = 0
+let g:phpqa_codesniffer_autorun = 0
+" " Show code coverage on load (default = 0)
+let g:phpqa_codecoverage_autorun = 1
