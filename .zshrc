@@ -21,6 +21,8 @@ export PATH="/opt/local/libexec/gnubin/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+export PATH=~/dev/repos/colourbox/private/node_modules/.bin:$PATH
+PATH=$HOME/.composer/vendor/bin:$PATH
 
 # zsh copy-mode
 export EDITOR="vim"
@@ -161,3 +163,6 @@ export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+chpwd() ls # ls after each cd
+

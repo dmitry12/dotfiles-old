@@ -210,17 +210,9 @@ nnoremap <S-l> gt
 nnoremap gp `[v`]
 nnoremap <F10> gg<CR><C-w><C-w>gg<CR>:set scrollbind<CR>:diffthis<CR><C-w><C-w>:set scrollbind<CR>:diffthis<CR>
 
-autocmd FileType php map <leader>d <Esc>iecho "<pre>"; var_dump(); die;<Esc>F)i
-autocmd FileType javascript map <leader>d <Esc>iconsole.log();<Esc>F)i
-
-au FileType ruby setl sw=2 sts=2 et
-
-au BufRead,BufNewFile *.phtml map <leader>d <Esc>i<pre><?php var_dump(); die;?><Esc>F)i
-au BufRead,BufNewFile *.phtml setlocal filetype=html smartindent
-"set shiftwidth=2
-"set tabstop=2
-"set expandtab
+autocmd FileType ruby setl sw=2 sts=2 et
 autocmd VimResized * :wincmd =
+
 nmap Y y$
 
 let g:phpqa_messdetector_autorun = 0
