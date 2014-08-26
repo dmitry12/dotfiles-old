@@ -18,7 +18,7 @@ if [ -f ~/.zsh/startup.zsh ]; then
 fi
 
 export PATH="/opt/local/libexec/gnubin/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/ImageMagick/bin:$HOME/bin:/usr/local/share/python"
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH=~/dev/repos/colourbox/private/node_modules/.bin:$PATH
@@ -39,12 +39,12 @@ alias tmux='TERM=screen-256color-bce tmux'
 alias soz='source ~/.zshrc'
 
 # Misc
-alias vim='/opt/local/bin/vim'
+#alias vim='/opt/local/bin/vim'
 alias verdure='mplayer http://air.verdure.ru:8881/'
 alias cliqhop='mplayer -playlist http://somafm.com/cliqhop.pls'
 alias rutr='/Users/dmitree/dev/repos/google-translate-cli/translate {=ru}'
 alias tempmonitor='/Applications/TemperatureMonitor.app/Contents/MacOS/tempmonitor'
-
+alias vim='mvim -v'
 # Use gnu grep
 alias grep='ggrep'
 alias sed='gsed'
@@ -153,7 +153,7 @@ bindkey -v '\e.' insert-last-word # alt + .
 
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^Xe' edit-command-line # Ctrl+X e
+bindkey '^v' edit-command-line # Ctrl+X e
 
 # Colored man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -164,5 +164,18 @@ export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - in
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-chpwd() ls # ls after each cd
+chpwd() l # ls after each cd
 
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+alias fzf='/Users/dmitry/.vim/bundle/fzf/fzf'
