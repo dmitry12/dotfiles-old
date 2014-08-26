@@ -77,8 +77,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'mru.vim'
 NeoBundle 'comments.vim'
-NeoBundle 'ctrlp.vim'
-NeoBundle 'snipMate'
+"NeoBundle 'ctrlp.vim'
+"NeoBundle 'snipMate'
 NeoBundle 'ZoomWin'
 NeoBundle 'surround.vim'
 NeoBundle 'Tagbar'
@@ -100,9 +100,24 @@ NeoBundle 'rails.vim'
 NeoBundle 'd11wtq/tomorrow-theme-vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'joonty/vim-phpqa'
-
+"NeoBundle 'm2mdas/phpcomplete-extended'
+"NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'saihoooooooo/glowshi-ft.vim'
+NeoBundle 'junegunn/fzf'
+"NeoBundle 'roman/golden-ratio'
+" Track the engine.
+NeoBundle 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+NeoBundle 'honza/vim-snippets'
 call neobundle#end()
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 " Required:
 filetype plugin indent on
 NeoBundleCheck
@@ -166,7 +181,7 @@ cmap w!! w !sudo tee > /dev/null %
 command! Soz source ~/.vimrc
 
 nnoremap s :w<CR>
-nnoremap <C-@> :tabe %<CR>
+nnoremap <C-@> :tabe %<CR>:tabp<CR>:q<CR>:tabn<CR>
 
 let mapleader=" "
 nnoremap <leader>u :GundoToggle<CR>
@@ -219,3 +234,12 @@ let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 " " Show code coverage on load (default = 0)
 let g:phpqa_codecoverage_autorun = 1
+"autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+let g:snips_trigger_key = '<C-k>'
+
+nnoremap <C-p> :FZF<CR>
+nnoremap <leader>g :GoldenRatioToggle<CR>
+nnoremap <leader>t :tabe<CR>
+nnoremap <leader>z $zf%
