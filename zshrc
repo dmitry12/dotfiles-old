@@ -16,8 +16,11 @@ fi
 unsetopt correct
 
 export PATH="/opt/local/libexec/gnubin/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/ImageMagick/bin:$HOME/bin:/usr/local/share/python"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	#reattach-to-user-namespace -l /usr/local/bin/zsh
+	export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+	export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+fi
 export PATH=~/dev/repos/colourbox/private/node_modules/.bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH
 
@@ -39,10 +42,15 @@ alias verdure='mplayer http://air.verdure.ru:8881/'
 alias cliqhop='mplayer -playlist http://somafm.com/cliqhop.pls'
 alias rutr='/Users/dmitree/dev/repos/google-translate-cli/translate {=ru}'
 alias tempmonitor='/Applications/TemperatureMonitor.app/Contents/MacOS/tempmonitor'
-alias vim='mvim -v'
-# Use gnu grep
-alias grep='ggrep'
-alias sed='gsed'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	alias vim='mvim -v'
+	# Use gnu grep
+	alias grep='ggrep'
+	alias sed='gsed'
+	function c () {
+		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
+	}
+fi
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -56,10 +64,6 @@ alias -g G='| grep -i '
 alias -g S='-sub '
 alias -g C='| reattach-to-user-namespace pbcopy'
 alias -g L='| less -Si'
-
-function c () {
-	echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
-}
 
 # open this extensions with vim
 alias -s php=vim
@@ -114,7 +118,7 @@ alias vsl="vim --serverlist"
 alias gest='git number -c vim --servername colourbox --remote-tab'
 
 alias gc='git commit -v'
-alias gst='ua; git number'
+alias gst='git number'
 alias ga='git number add'
 alias gcof='git number checkout'
 alias gco='git checkout'
@@ -143,7 +147,7 @@ export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - in
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-chpwd() l # ls after each cd
+chpwd() ls # ls after each cd
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

@@ -33,7 +33,6 @@ set history=1000
 
 syntax sync minlines=256
 set synmaxcol=2048
-set autoindent
 
 set clipboard=unnamed
 
@@ -79,37 +78,39 @@ NeoBundle 'mru.vim'
 NeoBundle 'comments.vim'
 "NeoBundle 'ctrlp.vim'
 "NeoBundle 'snipMate'
-NeoBundle 'ZoomWin'
+"NeoBundle 'ZoomWin'
 NeoBundle 'surround.vim'
 NeoBundle 'Tagbar'
-NeoBundle 'Tabular'
+"NeoBundle 'Tabular'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-NeoBundle 'setget'
+"NeoBundle 'setget'
 NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 't9md/vim-quickhl'
-NeoBundle 'altercation/vim-colors-solarized.git'
+"NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'textobj-rubyblock'
-NeoBundle 'gavinbeatty/dragvisuals.vim'
-NeoBundle 'kana/vim-textobj-user'
+"NeoBundle 'textobj-rubyblock'
+"NeoBundle 'gavinbeatty/dragvisuals.vim'
+"NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'matrix.vim'
-NeoBundle 'rails.vim'
+"NeoBundle 'rails.vim'
 NeoBundle 'd11wtq/tomorrow-theme-vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'joonty/vim-phpqa'
 "NeoBundle 'm2mdas/phpcomplete-extended'
 "NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'saihoooooooo/glowshi-ft.vim'
+"NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'saihoooooooo/glowshi-ft.vim'
 NeoBundle 'junegunn/fzf'
 "NeoBundle 'roman/golden-ratio'
 " Track the engine.
 NeoBundle 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 NeoBundle 'honza/vim-snippets'
+"NeoBundle 'bling/vim-airline'
+NeoBundle "rodjek/vim-puppet"
 call neobundle#end()
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -243,3 +244,12 @@ nnoremap <C-p> :FZF<CR>
 nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
+set autoindent
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_powerline_fonts = 1
