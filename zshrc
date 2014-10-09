@@ -3,8 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
-
 if [ -f ~/.zsh/includes.zsh ]; then
 	source ~/.zsh/includes.zsh
 fi
@@ -15,16 +13,12 @@ fi
 
 unsetopt correct
 
-export PATH="/opt/local/libexec/gnubin/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/ImageMagick/bin:$HOME/bin:/usr/local/share/python"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	#reattach-to-user-namespace -l /usr/local/bin/zsh
-	export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-	export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
-fi
+PATH='/usr/local/bin':$HOME/bin:$PATH
 export PATH=~/dev/repos/colourbox/private/node_modules/.bin:$PATH
-PATH=$HOME/.composer/vendor/bin:$PATH
 
-export EDITOR="vim"
+export EDITOR='mvim -v'
+export GIT_EDITOR='mvim -v'
+export VISUAL='mvim -v'
 bindkey -v
 
 bindkey '^R' history-incremental-search-backward
@@ -32,21 +26,13 @@ bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
-alias wh='which'
 alias tmux='TERM=screen-256color-bce tmux'
 alias soz='source ~/.zshrc'
 
 # Misc
-#alias vim='/opt/local/bin/vim'
-alias verdure='mplayer http://air.verdure.ru:8881/'
-alias cliqhop='mplayer -playlist http://somafm.com/cliqhop.pls'
-alias rutr='/Users/dmitree/dev/repos/google-translate-cli/translate {=ru}'
-alias tempmonitor='/Applications/TemperatureMonitor.app/Contents/MacOS/tempmonitor'
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	alias vim='mvim -v'
-	# Use gnu grep
-	alias grep='ggrep'
-	alias sed='gsed'
 	function c () {
 		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
 	}
@@ -84,15 +70,6 @@ alias -s mkv=mplayer
 
 alias -s zip=unzip
 
-alias ff="source newf"
-alias gg="source newg"
-alias lf="source newlf"
-
-alias sff='source ${HOME}/.tmp/findAliases'
-alias sgg='source ${HOME}/.tmp/grepAliases'
-
-alias torp='~/dev/repos/torp/bin/torp'
-
 hash -d d=~/Downloads
 hash -d cb=~/dev/repos/colourbox
 hash -d b=~/bin
@@ -100,22 +77,6 @@ hash -d r=~/dev/repos
 hash -d g=~/dev/gists
 hash -d db=~/Dropbox
 hash -d tor=~/dev/repos/torp
-
-alias d1="cd -"
-alias d2="cd -2"
-alias d3="cd -3"
-alias d4="cd -4"
-alias d5="cd -5"
-alias d6="cd -6"
-alias d7="cd -7"
-alias d8="cd -8"
-alias d9="cd -9"
-
-alias vs="vim --servername colourbox"
-alias vst="vim --servername colourbox --remote-tab"
-alias vsl="vim --serverlist"
-
-alias gest='git number -c vim --servername colourbox --remote-tab'
 
 alias gc='git commit -v'
 alias gst='git number'
@@ -162,3 +123,5 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 alias fzf='/Users/dmitry/.vim/bundle/fzf/fzf'
+
+setopt RM_STAR_WAIT
