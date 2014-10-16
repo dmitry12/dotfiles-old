@@ -59,10 +59,6 @@ set colorcolumn=120
 
 set shell=zsh\ -l
 
-if filereadable(glob("~/.vimrc.local"))
-	source ~/.vimrc.local
-endif
-
 if has('vim_starting')
   set nocompatible
 
@@ -81,19 +77,21 @@ NeoBundle 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-NeoBundle 'stephpy/vim-php-cs-fixer'
+"NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'matrix.vim'
 NeoBundle 'd11wtq/tomorrow-theme-vim'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'joonty/vim-phpqa'
+"NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'SirVer/ultisnips'
 "NeoBundle 'honza/vim-snippets'
 NeoBundle "rodjek/vim-puppet"
 NeoBundle 'snipMate'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'scrooloose/syntastic'
 
 call neobundle#end()
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -177,15 +175,6 @@ nnoremap <leader>c :let @/ = ''<CR>
 nnoremap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap <leader>m :MRU<CR>
 
-"Quickhl
-"nmap <leader>m <Plug>(quickhl-manual-this)
-"xmap <leader>m <Plug>(quickhl-manual-this)
-"nmap <leader>M <Plug>(quickhl-manual-reset)
-"xmap <leader>M <Plug>(quickhl-manual-reset)
-"
-"nmap <leader>j <Plug>(quickhl-cword-toggle)
-"nmap <leader>] <Plug>(quickhl-tag-toggle)
-
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
@@ -215,25 +204,36 @@ autocmd VimResized * :wincmd =
 
 nmap Y y$
 
-let g:phpqa_messdetector_autorun = 0
-let g:phpqa_codesniffer_autorun = 0
-" " Show code coverage on load (default = 0)
-let g:phpqa_codecoverage_autorun = 1
-"autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+""let g:phpqa_messdetector_autorun = 0
+""let g:phpqa_codesniffer_autorun = 0
+""let g:phpqa_codecoverage_autorun = 1
+
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 let g:snips_trigger_key = '<C-k>'
 
 nnoremap <C-p> :FZF<CR>
+
 nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
-set autoindent
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+if filereadable(glob("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
 
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+set relativenumber
 
-let g:airline_powerline_fonts = 1
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=2 ctermbg=0 guifg=#009900 guibg=Grey
+highlight GitGutterChangeDefault ctermfg=3 ctermbg=0 guifg=#bbbb00 guibg=Grey
+highlight GitGutterDeleteDefault ctermfg=1 ctermbg=0 guifg=#ff2222 guibg=Grey
+highlight GitGutterChangeDeleteDefault ctermfg=1 ctermbg=0 guifg=#ff2222 guibg=Grey
+
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_quiet_messages = {}
+
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_phpcs_args = "-n  --tab_width=4"

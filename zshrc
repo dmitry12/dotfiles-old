@@ -78,20 +78,21 @@ hash -d g=~/dev/gists
 hash -d db=~/Dropbox
 hash -d tor=~/dev/repos/torp
 
-alias gc='git commit -v'
-alias gst='git number'
-alias ga='git number add'
-alias gcof='git number checkout'
-alias gco='git checkout'
-alias grh='git number reset head'
-alias gr='git number rm'
-alias gd='git number diff'
-alias gdc='git number diff --cached'
-alias ge='git number -c'
-alias gl='git pull'
-alias gp='git push'
-alias g='git'
-alias gb='git branch'
+#alias gc='git commit -v'
+#alias gst='git number'
+#alias ga='git number add'
+#alias gcof='git number checkout'
+#alias gco='git checkout'
+#alias grh='git number reset head'
+#alias gr='git number rm'
+#alias gd='git number diff'
+#alias gdc='git number diff --cached'
+#alias ge='git number -c'
+#alias gl='git pull'
+#alias gp='git push'
+#alias g='git'
+#alias gb='git branch'
+
 
 bindkey -v '\e.' insert-last-word # alt + .
 
@@ -125,3 +126,8 @@ bindkey '^Z' fancy-ctrl-z
 alias fzf='/Users/dmitry/.vim/bundle/fzf/fzf'
 
 setopt RM_STAR_WAIT
+
+[ -s "/Users/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/Users/dmitry/.scm_breeze/scm_breeze.sh"
+
+alias gst='git_status_shortcuts'
+[[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
