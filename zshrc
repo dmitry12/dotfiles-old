@@ -123,11 +123,14 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-alias fzf='/Users/dmitry/.vim/bundle/fzf/fzf'
+alias fzf="$HOME/.vim/bundle/fzf/fzf"
 
 setopt RM_STAR_WAIT
 
-[ -s "/Users/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/Users/dmitry/.scm_breeze/scm_breeze.sh"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
+
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 alias gst='git_status_shortcuts'
-[[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
