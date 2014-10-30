@@ -37,7 +37,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
 	}
 fi
-
+alias vim='mvim -v'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 

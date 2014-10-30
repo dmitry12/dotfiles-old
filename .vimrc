@@ -77,37 +77,29 @@ NeoBundle 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-"NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'matrix.vim'
 NeoBundle 'd11wtq/tomorrow-theme-vim'
 NeoBundle 'tpope/vim-abolish'
-"NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'honza/vim-snippets'
 NeoBundle "rodjek/vim-puppet"
 NeoBundle 'snipMate'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'vim-scripts/SQLComplete.vim'
+NeoBundle 'tmhedberg/matchit'
 
 call neobundle#end()
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"
 " Required:
 filetype plugin indent on
 NeoBundleCheck
 
 set background=dark
-"set background=light
 
 colorscheme Tomorrow-Night-Bright
 
@@ -118,6 +110,7 @@ if has("gui_running")
     set background=light
     set guifont=Monaco:h14
 endif
+
 let g:tmux_navigator_no_mappings = 1
 
 "Blinking cursor in insert mode (Tmux support)
@@ -205,14 +198,6 @@ autocmd VimResized * :wincmd =
 
 nmap Y y$
 
-""let g:phpqa_messdetector_autorun = 0
-""let g:phpqa_codesniffer_autorun = 0
-""let g:phpqa_codecoverage_autorun = 1
-
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-let g:snips_trigger_key = '<C-k>'
-
 nnoremap <C-p> :FZF<CR>
 
 nnoremap <leader>g :GoldenRatioToggle<CR>
@@ -238,7 +223,6 @@ let g:syntastic_quiet_messages = {}
 
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = "-n  --tab_width=4"
-
 
 " http://vim.wikia.com/wiki/VimTip563
 " List occurrences of keyword under cursor, and
@@ -272,3 +256,9 @@ endfunction
 
 nnoremap <Leader>I :call <SID>JumpOccurrence()<CR>
 nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
+
+nnoremap <Leader>tu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/unit", ""), "\.php", "Test.php", "")<CR> <CR>
+nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/integration", ""), "\.php", "Test.php", "")<CR> <CR>
+nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
+
+nnoremap Q nop
