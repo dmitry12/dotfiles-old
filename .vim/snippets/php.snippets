@@ -1,8 +1,18 @@
 snippet vd var dump with die
 	echo "<pre>"; var_dump(${1});die;
+
 snippet fun function without text
 	${1:public }function ${2:FunctionName}(${3})
 	{
 		${4}
+	}
+
+snippet test
+	<?php
+	class ${1:}Test extends \PHPUnit_Framework_TestCase
+	{
+		public function testThatStuffHappends()
+		{
+		}
 	}
 

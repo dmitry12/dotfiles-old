@@ -37,7 +37,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
 	}
 fi
-
+alias vim='mvim -v'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -131,3 +131,4 @@ setopt RM_STAR_WAIT
 
 alias gst='git_status_shortcuts'
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
