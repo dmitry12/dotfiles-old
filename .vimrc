@@ -92,6 +92,7 @@ NeoBundle "rodjek/vim-puppet"
 NeoBundle 'snipMate'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'juvenn/mustache.vim'
 
 call neobundle#end()
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -237,3 +238,37 @@ let g:syntastic_quiet_messages = {}
 
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = "-n  --tab_width=4"
+
+
+" http://vim.wikia.com/wiki/VimTip563
+" List occurrences of keyword under cursor, and
+" jump to selected occurrence.
+function! s:JumpOccurrence()
+  let v:errmsg = ""
+  exe "normal [I"
+  if strlen(v:errmsg) == 0
+    let nr = input("Which one: ")
+    if nr =~ '\d\+'
+      exe "normal! " . nr . "[\t"
+    endif
+  endif
+endfunction
+
+" List occurrences of keyword entered at prompt, and
+" jump to selected occurrence.
+function! s:JumpPrompt()
+  let keyword = input("Keyword to find: ")
+  if strlen(keyword) > 0
+    let v:errmsg = ""
+    exe "ilist! " . keyword
+    if strlen(v:errmsg) == 0
+      let nr = input("Which one: ")
+      if nr =~ '\d\+'
+        exe "ijump! " . nr . keyword
+      endif
+    endif
+  endif
+endfunction
+
+nnoremap <Leader>I :call <SID>JumpOccurrence()<CR>
+nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
