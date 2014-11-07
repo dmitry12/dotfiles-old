@@ -51,6 +51,7 @@ set convert-meta off
 alias gst='git_status_shortcuts'
 alias tmux='TERM=screen-256color-bce tmux'
 alias soz='source ~/.zshrc'
+alias gn='geeknote'
 
 alias -g G='| grep -i '
 alias -g S='-sub '
@@ -116,3 +117,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 . ~/.bin/z/z.sh
+
+GREP_COLOR="31" # Show red as match color
+

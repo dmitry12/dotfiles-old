@@ -92,15 +92,14 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'juvenn/mustache.vim'
 NeoBundle 'vim-scripts/SQLComplete.vim'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'junegunn/goyo.vim'
 
 call neobundle#end()
-"
-" Required:
 filetype plugin indent on
+
 NeoBundleCheck
 
 set background=dark
-
 colorscheme Tomorrow-Night-Bright
 
 if has("gui_running")
