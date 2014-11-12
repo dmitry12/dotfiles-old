@@ -120,3 +120,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 GREP_COLOR="31" # Show red as match color
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias se='source env.sh'
