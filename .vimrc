@@ -77,22 +77,17 @@ NeoBundle 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 't9md/vim-quickhl'
+"NeoBundle 'Lokaltog/vim-easymotion'
+"NeoBundle 't9md/vim-quickhl'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'matrix.vim'
-NeoBundle 'd11wtq/tomorrow-theme-vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'junegunn/fzf'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle "rodjek/vim-puppet"
 NeoBundle 'snipMate'
-NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'vim-scripts/SQLComplete.vim'
 NeoBundle 'tmhedberg/matchit'
-NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-vividchalk'
 
 call neobundle#end()
 filetype plugin indent on
@@ -100,7 +95,8 @@ filetype plugin indent on
 NeoBundleCheck
 
 set background=dark
-colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow-Night-Bright
+colorscheme vividchalk
 
 if has("gui_running")
     set guioptions-=T
@@ -157,6 +153,7 @@ cmap w!! w !sudo tee > /dev/null %
 command! Soz source ~/.vimrc
 
 nnoremap s :w<CR>
+"TODO: Add variable to determine current position, and then get back to it
 nnoremap <C-@> :tabe %<CR>:tabp<CR>:q<CR>:tabn<CR>
 
 let mapleader=" "
@@ -261,3 +258,4 @@ nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox"
 nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
 
 nnoremap Q nop
+nnoremap <C-t> :NERDTreeToggle<CR>
