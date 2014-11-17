@@ -1,0 +1,27 @@
+browser open
+
+goto-next-feed no
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+
+color info white black
+color listfocus white red # news item
+#
+#color info default default reverse
+#color listnormal_unread yellow default
+#color listfocus blue default reverse bold
+#color listfocus_unread blue default reverse bold
+#
+refresh-on-startup yes
+mark-as-read-on-hover yes
+always-display-description true
+auto-reload yes
+download-full-page yes
+
