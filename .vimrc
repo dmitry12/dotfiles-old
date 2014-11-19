@@ -88,6 +88,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
+NeoBundle 'MattesGroeger/vim-bookmarks'
 
 call neobundle#end()
 filetype plugin indent on
@@ -220,42 +221,14 @@ let g:syntastic_quiet_messages = {}
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = "-n  --tab_width=4"
 
-" http://vim.wikia.com/wiki/VimTip563
-" List occurrences of keyword under cursor, and
-" jump to selected occurrence.
-function! s:JumpOccurrence()
-  let v:errmsg = ""
-  exe "normal [I"
-  if strlen(v:errmsg) == 0
-    let nr = input("Which one: ")
-    if nr =~ '\d\+'
-      exe "normal! " . nr . "[\t"
-    endif
-  endif
-endfunction
-
-" List occurrences of keyword entered at prompt, and
-" jump to selected occurrence.
-function! s:JumpPrompt()
-  let keyword = input("Keyword to find: ")
-  if strlen(keyword) > 0
-    let v:errmsg = ""
-    exe "ilist! " . keyword
-    if strlen(v:errmsg) == 0
-      let nr = input("Which one: ")
-      if nr =~ '\d\+'
-        exe "ijump! " . nr . keyword
-      endif
-    endif
-  endif
-endfunction
-
-nnoremap <Leader>I :call <SID>JumpOccurrence()<CR>
-nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
-
 nnoremap <Leader>tu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/unit", ""), "\.php", "Test.php", "")<CR> <CR>
 nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/integration", ""), "\.php", "Test.php", "")<CR> <CR>
 nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
+
+highlight BookmarkSign ctermbg=NONE ctermfg=136
+highlight BookmarkLine ctermbg=17 ctermfg=NONE
+let g:bookmark_sign = '∆'
+let g:bookmark_highlight_lines = 1
 
 nnoremap Q nop
 nnoremap <C-t> :NERDTreeToggle<CR>
