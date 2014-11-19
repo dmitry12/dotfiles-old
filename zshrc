@@ -24,6 +24,7 @@ bindkey '^N' history-search-forward
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	alias vim='mvim -v'
+	alias tmux='TERM=screen-256color-bce tmux'
 
 	function c () {
 		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
@@ -34,10 +35,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export VISUAL='mvim -v'
 
 	alias -g C='| reattach-to-user-namespace pbcopy'
-
-	export EDITOR='mvim -v'
-	export GIT_EDITOR='mvim -v'
-	export VISUAL='mvim -v'
 fi
 
 export LC_ALL=en_US.UTF-8
@@ -49,9 +46,10 @@ set output-meta on
 set convert-meta off
 
 alias gst='git_status_shortcuts'
-alias tmux='TERM=screen-256color-bce tmux'
 alias soz='source ~/.zshrc'
 alias gn='geeknote'
+alias fzf="$HOME/.vim/bundle/fzf/fzf"
+alias se='source env.sh'
 
 alias -g G='| grep -i '
 alias -g S='-sub '
@@ -75,8 +73,8 @@ alias -s avi=mplayer
 alias -s mkv=mplayer
 
 alias -s zip=unzip
-
-hash -d d=~/Downloads
+#
+#hash -d d=~/Downloads
 hash -d cb=~/dev/repos/colourbox
 hash -d r=~/dev/repos
 hash -d db=~/Dropbox
@@ -107,18 +105,24 @@ fancy-ctrl-z () {
     zle clear-screen
   fi
 }
+
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-alias fzf="$HOME/.vim/bundle/fzf/fzf"
 setopt RM_STAR_WAIT
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
-. ~/.bin/z/z.sh
+#. ~/.bin/z/z.sh
+eval "$(fasd --init auto)"
 
 GREP_COLOR="31" # Show red as match color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias se='source env.sh'
+
+# Fzf
+
+fkill() {
+	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+}

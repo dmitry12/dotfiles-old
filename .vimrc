@@ -89,7 +89,8 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'MattesGroeger/vim-bookmarks'
-
+NeoBundle 'neilagabriel/vim-geeknote'
+NeoBundle 'Keithbsmiley/investigate.vim' "Requires dash.app for mac
 call neobundle#end()
 filetype plugin indent on
 
@@ -232,3 +233,17 @@ let g:bookmark_highlight_lines = 1
 
 nnoremap Q nop
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Z - cd to recent / frequent directories
+command! -nargs=* Z :call Z(<f-args>)
+function! Z(...)
+  let cmd = 'fasd -d -e printf'
+  for arg in a:000
+    let cmd = cmd . ' ' . arg
+  endfor
+  let path = system(cmd)
+  if isdirectory(path)
+    echo path
+    exec 'cd ' . path
+  endif
+endfunction
