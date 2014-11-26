@@ -126,3 +126,12 @@ GREP_COLOR="31" # Show red as match color
 fkill() {
 	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
+
+alias tmux='TERM=screen-256color-bce tmux'
+alias vim='gvim -v'
+
+export EDITOR='gvim -v'
+export GIT_EDITOR='gvim -v'
+export VISUAL='gvim -v'
+
+[ -s "/home/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/home/dmitry/.scm_breeze/scm_breeze.sh"

@@ -1,0 +1,11 @@
+autocmd LocationChange .*                             js modes.passAllKeys = false
+autocmd LocationChange mail\\.google\\.com            js modes.passAllKeys = true
+autocmd LocationChange www\\.google\\.com/calendar    js modes.passAllKeys = true
+autocmd LocationChange www\\.google\\.com/reader      js modes.passAllKeys = true
+autocmd LocationChange mail\\.google\\.com/tasks      js modes.passAllKeys = false
+
+map H :tabprevious<CR>
+map L :tabnext<CR>
+set hintchars=hjklasdf
+
+highlight Hint font-size:200%;color:white;background-color:red;padding:2px;

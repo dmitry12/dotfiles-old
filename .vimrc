@@ -89,7 +89,6 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'MattesGroeger/vim-bookmarks'
-NeoBundle 'neilagabriel/vim-geeknote'
 NeoBundle 'Keithbsmiley/investigate.vim' "Requires dash.app for mac
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplete.vim'
@@ -205,6 +204,8 @@ nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
 
+nnoremap S :!/home/dmitry/bin/sync<CR><CR>
+
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
@@ -251,6 +252,9 @@ function! Z(...)
   endif
 endfunction
 
+"
+" Neocomplete
+"
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -298,3 +302,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"
+" Neocomplete end
+"
