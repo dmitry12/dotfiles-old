@@ -1,0 +1,35 @@
+urxvt*foreground: #ffffff
+urxvt*background: #000000
+urxvt*color0: #000000
+urxvt*color1: #cc0000
+urxvt*color2: #4E9A06
+urxvt*color3: #C4A000
+urxvt*color4: #3465A4
+urxvt*color5: #75507B
+urxvt*color6: #06989A
+urxvt*color7: #D3D7CF
+urxvt*color8: #555753
+urxvt*color9: #EF2929
+urxvt*color10: #8AE234
+urxvt*color11: #FCE94F
+urxvt*color12: #729FCF
+urxvt*color13: #AD7FA8
+urxvt*color14: #34E2E2
+urxvt*color15: #EEEEEC
+
+! TAMZEN
+URxvt.font:              -*-terminus-medium-*-*-*-16*-*-*-*-*-*-*
+! URxvt.font:            -misc-tamzenforpowerline-*-r-normal-*-17-145-100-100-*-100-iso10646-1
+! URxvt.boldFont:        -misc-tamzenforpowerline-*-r-normal-*-17-145-100-100-*-100-iso10646-1
+! URxvt.italicFont:      -misc-tamzen-medium-r-*--20-*-*-*-*-*-*-*
+! URxvt.boldItalicFont:  -misc-tamzen-bold-r-*--20-*-*-*-*-*-*-*
+
+urxvt*scrollBar: false
+urxvt*internalBorder: 8
+urxvt*transparent: true
+urxvt*shading: 10
+
+urxvt*confirmExit: true
+urxvt*confirmClose: true
+
+urxvt*urlLauncher: chromium
