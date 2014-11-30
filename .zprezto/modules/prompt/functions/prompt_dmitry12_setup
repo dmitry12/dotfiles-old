@@ -1,0 +1,47 @@
+#
+# Theme is based on nicoulaj theme
+#
+# Features:
+#   - One line.
+#   - White/gray colors.
+#   - Only shows the path on the left prompt by default.
+#   - Crops the path to a defined length and only shows the path relative to
+#     the current VCS repository root.
+#   - Uses a different color depending on if the last command succeeded/failed.
+#
+
+function prompt_dmitry12_precmd {
+  vcs_info
+}
+
+function prompt_dmitry12_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_dmitry12_precmd
+
+  # Customizable parameters.
+  local max_path_chars=30
+  local vcs_info_color='%F{242}'
+
+  # Set vcs_info parameters.
+  zstyle ':vcs_info:*' enable bzr git hg svn
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' unstagedstr '!'
+  zstyle ':vcs_info:*' stagedstr '+'
+  zstyle ':vcs_info:*' actionformats "%S" "%r/%s/%b %u%c (%a)"
+  zstyle ':vcs_info:*' formats "%S" "%r/%s/%b %u%c"
+  zstyle ':vcs_info:*' nvcsformats "%~" ""
+
+  # Define prompts.
+  PROMPT="${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_0_%%.}'"%% "
+  RPROMPT="%D{%K:%m} ${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+}
+
+prompt_dmitry12_setup "$@"
