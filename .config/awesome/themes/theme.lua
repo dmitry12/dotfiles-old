@@ -41,8 +41,8 @@ theme.tasklist_floating_icon = "/usr/share/awesome/themes/default/tasklist/float
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.border_color = "#75507B"
-theme.border_width = "3"
-theme.border_focus = "#3FBD39"
+theme.border_width = "1"
+theme.border_focus = "#8700d7"
 theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
 theme.menu_height = "15"
 theme.menu_width  = "100"

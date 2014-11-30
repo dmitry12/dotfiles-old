@@ -74,7 +74,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "im", "code", 3, "media", "load", 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ "www", "code", "media", 4, 5, 6, 7, 8, "im" }, s, layouts[1])
 end
 -- }}}
 
@@ -378,3 +378,8 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 
 awful.util.spawn_with_shell("dropbox start &");
 awful.util.spawn_with_shell("killall mplayer");
+
+-- Conkybar
+awful.util.spawn_with_shell("conky &");
+mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
+
