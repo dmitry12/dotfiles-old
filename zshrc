@@ -3,6 +3,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+fpath=(~/.zsh/comp $fpath)
+autoload -U compinit
+compinit
+
 if [ -f ~/.zsh/includes.zsh ]; then
 	source ~/.zsh/includes.zsh
 fi
