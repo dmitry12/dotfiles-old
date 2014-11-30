@@ -30,7 +30,7 @@ use_spacer left
 show_graph_scale no
 show_graph_range no
 format_human_readable yes
-
+double_buffer yes
 color1 666666
 color2 888888
 color3 444444
