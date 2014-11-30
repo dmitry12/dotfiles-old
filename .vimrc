@@ -311,7 +311,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Neocomplete end
 "
 
-
 set undofile                " Save undo's after file closes
 set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos

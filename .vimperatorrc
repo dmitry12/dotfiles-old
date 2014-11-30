@@ -8,4 +8,4 @@ map H :tabprevious<CR>
 map L :tabnext<CR>
 set hintchars=hjklasdf
 
-highlight Hint font-size:200%;color:white;background-color:red;padding:2px;
+highlight Hint font-size:130%;color:black;background-color:yellow;padding:2px;
