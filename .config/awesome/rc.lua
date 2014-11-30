@@ -74,7 +74,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "www", "code", "media", 4, 5, 6, 7, 8, "im" }, s, layouts[1])
+    tags[s] = awful.tag({ "1www", "2code", "3media", "4sys", "5rss", 6, 7, 8, "9im" }, s, layouts[1])
 end
 -- }}}
 
@@ -256,6 +256,10 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
+	awful.key({ modkey, "Shift"    }, "Right",     function () awful.tag.incmwfact( 0.01)    end),
+	awful.key({ modkey, "Shift"    }, "Left",     function () awful.tag.incmwfact(-0.01)    end),
+	awful.key({ modkey, "Shift"    }, "Down",     function () awful.client.incwfact( 0.01)    end),
+	awful.key({ modkey, "Shift"    }, "Up",     function () awful.client.incwfact(-0.01)    end),
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
@@ -382,4 +386,3 @@ awful.util.spawn_with_shell("killall mplayer");
 -- Conkybar
 awful.util.spawn_with_shell("conky &");
 mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
-
