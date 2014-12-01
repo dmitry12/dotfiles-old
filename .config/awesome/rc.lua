@@ -40,7 +40,8 @@ end
 beautiful.init("/home/dmitry/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+-- terminal = "urxvt"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -384,5 +385,5 @@ awful.util.spawn_with_shell("dropbox start &");
 awful.util.spawn_with_shell("killall mplayer");
 
 -- Conkybar
-awful.util.spawn_with_shell("conky &");
+-- awful.util.spawn_with_shell("conky &");
 mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
