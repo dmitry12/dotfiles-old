@@ -41,7 +41,7 @@ function prompt_dmitry12_setup {
 
   # Define prompts.
   PROMPT="${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_0_%%.}'"%%%b "
-  RPROMPT="%D{%K:%m} ${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+  RPROMPT="%D{%K:%M} ${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
 }
 
 prompt_dmitry12_setup "$@"
