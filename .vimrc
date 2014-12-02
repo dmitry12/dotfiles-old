@@ -77,20 +77,14 @@ NeoBundle 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-"NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 't9md/vim-quickhl'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'snipMate'
-"NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tmhedberg/matchit'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'MattesGroeger/vim-bookmarks'
-NeoBundle 'Keithbsmiley/investigate.vim' "Requires dash.app for mac
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 
 call neobundle#end()
@@ -208,7 +202,7 @@ nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
 
-nnoremap S :!/home/dmitry/bin/sync<CR><CR>
+nnoremap S :!sync<CR><CR>:!reload-browser chromium<CR><CR>
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
