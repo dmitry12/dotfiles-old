@@ -40,7 +40,8 @@ end
 beautiful.init("/home/dmitry/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+-- terminal = "urxvt"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -111,11 +112,11 @@ mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, awful.tag.viewnext),
-                    awful.button({ }, 5, awful.tag.viewprev)
+                    awful.button({ modkey }, 1, awful.client.movetotag)
+--                    awful.button({ }, 3, awful.tag.viewtoggle),
+--                    awful.button({ modkey }, 3, awful.client.toggletag),
+--                    awful.button({ }, 4, awful.tag.viewnext),
+--                    awful.button({ }, 5, awful.tag.viewprev)
                     )
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -188,11 +189,9 @@ end
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+--root.buttons(awful.util.table.join(
+--    awful.button({ }, 3, function () mymainmenu:toggle() end)
+--))
 -- }}}
 
 -- {{{ Key bindings
@@ -384,5 +383,5 @@ awful.util.spawn_with_shell("dropbox start &");
 awful.util.spawn_with_shell("killall mplayer");
 
 -- Conkybar
-awful.util.spawn_with_shell("conky &");
+-- awful.util.spawn_with_shell("conky &");
 mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
