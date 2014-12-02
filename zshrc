@@ -134,6 +134,18 @@ fkill() {
 alias tmux='TERM=screen-256color-bce tmux'
 alias vim='gvim -v'
 
+alias vs="vim --servername colourbox"
+alias vst="vim --servername colourbox --remote-tab"
+alias vsl="vim --serverlist"
+
+function vsv() {
+  vim --servername colourbox --remote-send "<C-\><C-n>:vnew ${1}<CR>"
+}
+
+function vss() {
+  vim --servername colourbox --remote-send "<C-\><C-n>:split ${1}<CR>"
+}
+
 export EDITOR='gvim -v'
 export GIT_EDITOR='gvim -v'
 export VISUAL='gvim -v'
