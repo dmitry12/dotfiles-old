@@ -7,5 +7,5 @@ autocmd LocationChange mail\\.google\\.com/tasks      js modes.passAllKeys = fal
 map H :tabprevious<CR>
 map L :tabnext<CR>
 set hintchars=hjklasdf
-
+set focuscontent
 highlight Hint font-size:130%;color:black;background-color:yellow;padding:2px;
