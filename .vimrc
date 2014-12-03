@@ -86,6 +86,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'MattesGroeger/vim-bookmarks'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'mattn/emmet-vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -202,7 +203,7 @@ nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
 
-nnoremap S :!sync<CR><CR>:!reload-browser chromium<CR><CR>
+nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local

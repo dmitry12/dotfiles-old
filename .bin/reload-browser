@@ -12,7 +12,7 @@ BROWSER=$1
 #
 # if was empty, default set to name of browser, firefox/chrome/opera/etc..
 if [ -z "${BROWSER}" ]; then
-    BROWSER=firefox
+    BROWSER=Chrom
 fi
 #
 # get which window is active right now
