@@ -87,6 +87,19 @@ NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'MattesGroeger/vim-bookmarks'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tmhedberg/matchit'
+"NeoBundle 'vim-scripts/php_localvarcheck.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/neomru.vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -166,7 +179,15 @@ nnoremap <leader>l :set list!<CR>
 nnoremap <leader>pr :TagbarToggle<CR>
 nnoremap <leader>c :let @/ = ''<CR>
 nnoremap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-nnoremap <leader>m :MRU<CR>
+"nnoremap <leader>m :MRU<CR>
+
+nnoremap <leader>m :Unite -start-insert file_mru<CR>
+nnoremap <leader>b :Unite -start-insert buffer<CR>
+nnoremap <leader>ur :Unite -start-insert register<CR>
+nnoremap <leader>ul :Unite -start-insert line<CR>
+
+nnoremap <C-p> :Unite -start-insert file_rec/git file_mru buffer<CR>
+
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -197,19 +218,22 @@ autocmd VimResized * :wincmd =
 
 nmap Y y$
 
-nnoremap <C-p> :FZF<CR>
+"nnoremap <C-p> :FZF<CR>
 
 nnoremap <leader>g :GoldenRatioToggle<CR>
 nnoremap <leader>t :tabe<CR>
 nnoremap <leader>z $zf%
 
-nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>
+"Also select chromium when tab is reloaded. Clicks at x:2318 y:7
+"nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
+nnoremap S :w<CR>:!sync<CR><CR>
+nnoremap <leader>S :w<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
 
-set relativenumber
+set number
 
 highlight clear SignColumn
 highlight GitGutterAdd ctermfg=2 ctermbg=0 guifg=#009900 guibg=Grey
@@ -311,6 +335,9 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
+
+"hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
+"hi StatusLineNC ctermfg=249 guifg=#b2b2b2 ctermbg=237 guibg=#3a3a3a cterm=none gui=none
 " Interesting stuff
 "
 "       let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
