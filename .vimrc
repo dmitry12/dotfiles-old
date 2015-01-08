@@ -174,15 +174,12 @@ nnoremap <C-@> :tabe %<CR>:tabp<CR>:q<CR>:tabn<CR>
 
 let mapleader=" "
 nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>q :wq<CR>
 nnoremap <leader>l :set list!<CR>
 nnoremap <leader>pr :TagbarToggle<CR>
 nnoremap <leader>c :let @/ = ''<CR>
-nnoremap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-"nnoremap <leader>m :MRU<CR>
 
 nnoremap <leader>m :Unite -start-insert file_mru<CR>
-nnoremap <leader>b :Unite -start-insert buffer<CR>
+nnoremap <leader>ub :Unite -start-insert buffer<CR>
 nnoremap <leader>ur :Unite -start-insert register<CR>
 nnoremap <leader>ul :Unite -start-insert line<CR>
 
@@ -335,9 +332,7 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
-
 "hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
 "hi StatusLineNC ctermfg=249 guifg=#b2b2b2 ctermbg=237 guibg=#3a3a3a cterm=none gui=none
 " Interesting stuff
 "
-"       let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
