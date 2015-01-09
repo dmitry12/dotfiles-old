@@ -69,28 +69,28 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'mru.vim'
-NeoBundle 'comments.vim'
-NeoBundle 'surround.vim'
-NeoBundle 'Tagbar'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'fugitive.vim'
-NeoBundle 'Tabmerge'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'junegunn/fzf'
-NeoBundle 'snipMate'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
+NeoBundleLazy 'christoomey/vim-tmux-navigator'
+NeoBundleLazy 'mru.vim'
+NeoBundleLazy 'comments.vim'
+NeoBundleLazy 'surround.vim'
+NeoBundleLazy 'Tagbar'
+NeoBundleLazy 'groenewege/vim-less'
+NeoBundleLazy 'fugitive.vim'
+NeoBundleLazy 'Tabmerge'
+NeoBundleLazy 'sjl/gundo.vim'
+NeoBundleLazy 'tpope/vim-abolish'
+NeoBundleLazy 'junegunn/fzf'
+NeoBundleLazy 'snipMate'
+NeoBundleLazy 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'MattesGroeger/vim-bookmarks'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tmhedberg/matchit'
-"NeoBundle 'vim-scripts/php_localvarcheck.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', {
+NeoBundleLazy 'MattesGroeger/vim-bookmarks'
+NeoBundleLazy 'Shougo/neocomplete.vim'
+NeoBundleLazy 'mattn/emmet-vim'
+NeoBundleLazy 'tmhedberg/matchit'
+"NeoBundleLazy 'vim-scripts/php_localvarcheck.vim'
+NeoBundleLazy 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
 \     'cygwin' : 'make -f make_cygwin.mak',
@@ -184,7 +184,7 @@ nnoremap <leader>ur :Unite -start-insert register<CR>
 nnoremap <leader>ul :Unite -start-insert line<CR>
 
 nnoremap <C-p> :Unite -start-insert file_rec/git file_mru buffer<CR>
-
+nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -214,12 +214,6 @@ autocmd FileType ruby setl sw=2 sts=2 et
 autocmd VimResized * :wincmd =
 
 nmap Y y$
-
-"nnoremap <C-p> :FZF<CR>
-
-nnoremap <leader>g :GoldenRatioToggle<CR>
-nnoremap <leader>t :tabe<CR>
-nnoremap <leader>z $zf%
 
 "Also select chromium when tab is reloaded. Clicks at x:2318 y:7
 "nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
