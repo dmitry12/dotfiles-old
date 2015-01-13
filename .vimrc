@@ -70,23 +70,34 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'mru.vim'
-NeoBundle 'comments.vim'
 NeoBundle 'surround.vim'
-NeoBundle 'Tagbar'
-NeoBundle 'groenewege/vim-less'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
-NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'junegunn/fzf'
 NeoBundle 'snipMate'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'MattesGroeger/vim-bookmarks'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'mattn/emmet-vim'
+NeoBundleLazy 'mru.vim'
+NeoBundleLazy 'comments.vim'
+NeoBundleLazy 'Tagbar'
+NeoBundleLazy 'groenewege/vim-less'
+NeoBundleLazy 'sjl/gundo.vim'
+NeoBundleLazy 'scrooloose/nerdtree'
+NeoBundleLazy 'Shougo/neocomplete.vim'
+NeoBundleLazy 'mattn/emmet-vim'
+NeoBundleLazy 'tmhedberg/matchit'
+"NeoBundleLazy 'vim-scripts/php_localvarcheck.vim'
+NeoBundleLazy 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/neomru.vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -161,12 +172,17 @@ nnoremap <C-@> :tabe %<CR>:tabp<CR>:q<CR>:tabn<CR>
 
 let mapleader=" "
 nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>q :wq<CR>
 nnoremap <leader>l :set list!<CR>
 nnoremap <leader>pr :TagbarToggle<CR>
 nnoremap <leader>c :let @/ = ''<CR>
-nnoremap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-nnoremap <leader>m :MRU<CR>
+
+nnoremap <leader>m :Unite -start-insert file_mru<CR>
+nnoremap <leader>ub :Unite -start-insert buffer<CR>
+nnoremap <leader>ur :Unite -start-insert register<CR>
+nnoremap <leader>ul :Unite -start-insert line<CR>
+
+nnoremap <C-p> :Unite -start-insert file_rec/git file_mru buffer<CR>
+nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -197,19 +213,16 @@ autocmd VimResized * :wincmd =
 
 nmap Y y$
 
-nnoremap <C-p> :FZF<CR>
-
-nnoremap <leader>g :GoldenRatioToggle<CR>
-nnoremap <leader>t :tabe<CR>
-nnoremap <leader>z $zf%
-
-nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>
+"Also select chromium when tab is reloaded. Clicks at x:2318 y:7
+"nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
+nnoremap S :w<CR>:!sync<CR><CR>
+nnoremap <leader>S :w<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
 
-set relativenumber
+set number
 
 highlight clear SignColumn
 highlight GitGutterAdd ctermfg=2 ctermbg=0 guifg=#009900 guibg=Grey
@@ -311,6 +324,7 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
+"hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
+"hi StatusLineNC ctermfg=249 guifg=#b2b2b2 ctermbg=237 guibg=#3a3a3a cterm=none gui=none
 " Interesting stuff
 "
-"       let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
