@@ -77,10 +77,13 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'snipMate'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-vividchalk'
+NeoBundleLazy 'junegunn/fzf'
 NeoBundleLazy 'mru.vim'
 NeoBundleLazy 'comments.vim'
 NeoBundleLazy 'Tagbar'
-NeoBundleLazy 'groenewege/vim-less'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'adoy/vim-php-refactoring-toolbox'
+NeoBundle 'embear/vim-localvimrc'
 NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -181,8 +184,10 @@ nnoremap <leader>ub :Unite -start-insert buffer<CR>
 nnoremap <leader>ur :Unite -start-insert register<CR>
 nnoremap <leader>ul :Unite -start-insert line<CR>
 
+nnoremap <leader><leader> :FZF<CR>
+
 nnoremap <C-p> :Unite -start-insert file_rec/git file_mru buffer<CR>
-nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
+"nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
