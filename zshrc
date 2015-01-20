@@ -151,3 +151,5 @@ export GIT_EDITOR='gvim -v'
 export VISUAL='gvim -v'
 
 [ -s "/home/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/home/dmitry/.scm_breeze/scm_breeze.sh"
+
+export BROWSER=/usr/bin/chromium

@@ -25,6 +25,11 @@ set softtabstop=0
 set shiftwidth=4
 set tabstop=4
 
+"Use spaces
+set expandtab
+set shiftwidth=4
+set list
+
 "Always show status bar (Even when one file is openned)
 set laststatus=2
 
@@ -78,9 +83,12 @@ NeoBundle 'snipMate'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'embear/vim-localvimrc'
+NeoBundleLazy 'junegunn/fzf'
 NeoBundleLazy 'mru.vim'
 NeoBundleLazy 'Tagbar'
-NeoBundleLazy 'groenewege/vim-less'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'adoy/vim-php-refactoring-toolbox'
+NeoBundle 'embear/vim-localvimrc'
 NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -175,14 +183,19 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>l :set list!<CR>
 nnoremap <leader>pr :TagbarToggle<CR>
 nnoremap <leader>c :let @/ = ''<CR>
+nnoremap <leader>sh :set hidden!<CR>:set hidden?<CR>
+nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i
 
 nnoremap <leader>m :Unite -start-insert file_mru<CR>
 nnoremap <leader>ub :Unite -start-insert buffer<CR>
 nnoremap <leader>ur :Unite -start-insert register<CR>
 nnoremap <leader>ul :Unite -start-insert line<CR>
 
-nnoremap <C-p> :Unite -start-insert file_rec/git file_mru buffer<CR>
-nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
+
+"nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
+
+"TODO Change grep -v to find . -prune -name
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \| grep -v git \| grep -v node_modules \| grep -v vendor \| grep -v Zend', 'sink': 'tabe' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
