@@ -25,3 +25,4 @@ always-display-description true
 auto-reload yes
 download-full-page yes
 
+browser "/usr/bin/chromium %u &"
