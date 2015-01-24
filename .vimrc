@@ -82,7 +82,8 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'snipMate'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'embear/vim-localvimrc'
+NeoBundleLazy 'embear/vim-localvimrc'
+NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundleLazy 'junegunn/fzf'
 NeoBundleLazy 'mru.vim'
 NeoBundleLazy 'Tagbar'
@@ -184,6 +185,8 @@ nnoremap <leader>l :set list!<CR>
 nnoremap <leader>pr :TagbarToggle<CR>
 nnoremap <leader>c :let @/ = ''<CR>
 nnoremap <leader>sh :set hidden!<CR>:set hidden?<CR>
+
+nnoremap <leader>gs :tabe<CR>:set hidden<CR>:r!git status<CR>
 nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i
 
 nnoremap <leader>m :Unite -start-insert file_mru<CR>
@@ -338,4 +341,7 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
 hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=56 guibg=#5f00d7 cterm=bold gui=bold
+
+let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+
 "hi StatusLineNC ctermfg=249 guifg=#b2b2b2 ctermbg=237 guibg=#3a3a3a cterm=none gui=none
