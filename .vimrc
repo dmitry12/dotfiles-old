@@ -198,7 +198,7 @@ nnoremap <leader>ul :Unite -start-insert line<CR>
 "nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
 "TODO Change grep -v to find . -prune -name
-nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \| grep -v git \| grep -v node_modules \| grep -v vendor \| grep -v Zend', 'sink': 'tabe' })<CR>
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \| grep -v git \| grep -v node_modules \| grep -v vendor \| grep -v Zend', 'sink': 'e' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
