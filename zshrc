@@ -132,7 +132,7 @@ fkill() {
 }
 
 alias tmux='TERM=screen-256color-bce tmux'
-alias vim='gvim -v'
+alias vim='vim'
 
 alias vs="vim --servername colourbox"
 alias vst="vim --servername colourbox --remote-tab"
@@ -146,9 +146,9 @@ function vss() {
   vim --servername colourbox --remote-send "<C-\><C-n>:split ${1}<CR>"
 }
 
-export EDITOR='gvim -v'
-export GIT_EDITOR='gvim -v'
-export VISUAL='gvim -v'
+export EDITOR='vim'
+export GIT_EDITOR='vim'
+export VISUAL='vim'
 
 alias grep='grep --color=always'
 
