@@ -155,3 +155,5 @@ alias grep='grep --color=always'
 [ -s "/home/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/home/dmitry/.scm_breeze/scm_breeze.sh"
 
 export BROWSER=/usr/bin/chromium
+
+alias iud="sudo ifdown wlan0 && sudo ifup wlan0"
