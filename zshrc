@@ -55,6 +55,7 @@ alias gn='geeknote'
 alias fzf="$HOME/.vim/bundle/fzf/fzf"
 alias se='source env.sh'
 
+alias -g C='| xclip -in -selection clipboard'
 alias -g G='| grep -i '
 alias -g S='-sub '
 alias -g L='| less -Si'
@@ -155,3 +156,4 @@ alias grep='grep --color=always'
 [ -s "/home/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/home/dmitry/.scm_breeze/scm_breeze.sh"
 
 export BROWSER=/usr/bin/chromium
+alias suka=sudo
