@@ -43,11 +43,11 @@
   control+shift + q
 
 # Increase volume
-"amixer -c 0 set Master 5+"
+"amixer set Master on && amixer -c 0 set Master 5+"
    XF86AudioRaiseVolume
 
 # Increase volume
-"amixer -c 0 set Master 5-"
+"amixer set Master on && amixer -c 0 set Master 5-"
    XF86AudioLowerVolume
 
 "amixer set Master toggle"
