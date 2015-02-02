@@ -107,7 +107,7 @@ NeoBundleLazy 'Shougo/vimproc.vim', {
 \    },
 \ }
 NeoBundle 'Shougo/neomru.vim'
-
+NeoBundle 'digitaltoad/vim-jade'
 call neobundle#end()
 filetype plugin indent on
 
