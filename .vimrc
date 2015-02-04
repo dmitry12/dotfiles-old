@@ -109,6 +109,7 @@ NeoBundleLazy 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'paradigm/SkyBison'
 NeoBundle 'chilicuil/vim-sprunge'
+NeoBundle 'digitaltoad/vim-jade'
 
 call neobundle#end()
 filetype plugin indent on
