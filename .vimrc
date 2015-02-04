@@ -107,6 +107,8 @@ NeoBundleLazy 'Shougo/vimproc.vim', {
 \    },
 \ }
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'paradigm/SkyBison'
+NeoBundle 'chilicuil/vim-sprunge'
 
 call neobundle#end()
 filetype plugin indent on
@@ -373,3 +375,4 @@ function! RangeChooser()
 endfunction
 command! -bar RangerChooser call RangeChooser()
 nnoremap <leader>r :<C-U>RangerChooser<CR>
+nnoremap <leader>b :ls<CR>:b<space>
