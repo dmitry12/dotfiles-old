@@ -190,7 +190,7 @@ nnoremap <leader>c :let @/ = ''<CR>
 nnoremap <leader>sh :set hidden!<CR>:set hidden?<CR>
 
 nnoremap <leader>gs :tabe<CR>:set hidden<CR>:r!git status<CR>
-nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i
+nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i<space>
 
 nnoremap <leader>m :Unite -start-insert file_mru<CR>
 nnoremap <leader>ub :Unite -start-insert buffer<CR>
