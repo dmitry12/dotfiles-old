@@ -158,6 +158,6 @@ alias grep='grep --color=always'
 export BROWSER=/usr/bin/chromium
 alias iud="sudo ifdown wlan0 && sudo ifup wlan0"
 
-sprundge() {
+sprunge() {
     cat | curl -F 'sprunge=<-' http://sprunge.us
 }
