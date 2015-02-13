@@ -97,7 +97,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'paradigm/SkyBison'
 NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'stulzer/heroku-colorscheme'
+NeoBundle 'dmitry12/heroku-colorscheme'
 
 call neobundle#end()
 filetype plugin indent on
