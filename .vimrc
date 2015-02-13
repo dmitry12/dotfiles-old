@@ -97,6 +97,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'paradigm/SkyBison'
 NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'stulzer/heroku-colorscheme'
 
 call neobundle#end()
 filetype plugin indent on
@@ -108,7 +109,7 @@ set background=dark
 if $DISPLAY == ""
 	"When running without X
 else
-	colorscheme vividchalk
+	colorscheme heroku-terminal
 endif
 
 if has("gui_running")
