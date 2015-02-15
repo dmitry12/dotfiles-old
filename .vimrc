@@ -59,6 +59,7 @@ set hlsearch
 set complete=.,w,b,u,i
 set pastetoggle=<F9>
 set splitright
+set path=.,**
 set tags+=tags,~/dev/repos/tags
 set colorcolumn=120
 
@@ -89,27 +90,14 @@ NeoBundleLazy 'mru.vim'
 NeoBundleLazy 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'adoy/vim-php-refactoring-toolbox'
-NeoBundle 'embear/vim-localvimrc'
 NeoBundleLazy 'sjl/gundo.vim'
-NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundleLazy 'Shougo/neocomplete.vim'
-NeoBundleLazy 'mattn/emmet-vim'
 NeoBundleLazy 'tmhedberg/matchit'
-"NeoBundleLazy 'vim-scripts/php_localvarcheck.vim'
-NeoBundleLazy 'Shougo/unite.vim'
-NeoBundleLazy 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'paradigm/SkyBison'
 NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'dmitry12/heroku-colorscheme'
 
 call neobundle#end()
 filetype plugin indent on
@@ -121,7 +109,7 @@ set background=dark
 if $DISPLAY == ""
 	"When running without X
 else
-	colorscheme vividchalk
+	colorscheme heroku-terminal
 endif
 
 if has("gui_running")
@@ -261,28 +249,7 @@ nnoremap <Leader>tu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox"
 nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/integration", ""), "\.php", "Test.php", "")<CR> <CR>
 nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
 
-highlight BookmarkSign ctermbg=NONE ctermfg=136
-highlight BookmarkLine ctermbg=17 ctermfg=NONE
-let g:bookmark_sign = '∆'
-let g:bookmark_highlight_lines = 1
-
 nnoremap Q nop
-nnoremap <C-t> :NERDTreeToggle<CR>
-
-" Z - cd to recent / frequent directories
-command! -nargs=* Z :call Z(<f-args>)
-function! Z(...)
-  let cmd = 'fasd -d -e printf'
-  for arg in a:000
-    let cmd = cmd . ' ' . arg
-  endfor
-  let path = system(cmd)
-  if isdirectory(path)
-    echo path
-    exec 'cd ' . path
-  endif
-endfunction
-
 "
 " Neocomplete
 "
@@ -374,6 +341,8 @@ function! RangeChooser()
     endfor
     redraw!
 endfunction
+
 command! -bar RangerChooser call RangeChooser()
+
 nnoremap <leader>r :<C-U>RangerChooser<CR>
 nnoremap <leader>b :ls<CR>:b<space>

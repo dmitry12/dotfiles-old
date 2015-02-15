@@ -151,8 +151,6 @@ export EDITOR='vim'
 export GIT_EDITOR='vim'
 export VISUAL='vim'
 
-alias grep='grep --color=always'
-
 [ -s "/home/dmitry/.scm_breeze/scm_breeze.sh" ] && source "/home/dmitry/.scm_breeze/scm_breeze.sh"
 
 export BROWSER=/usr/bin/chromium
