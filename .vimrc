@@ -348,6 +348,9 @@ nnoremap <leader>r :<C-U>RangerChooser<CR>
 nnoremap <leader>b :ls<CR>:b<space>
 
 function! SearchAndReplace()
+  " Stolen from http://stackoverflow.com/a/6271254/794380
+
+  " Get visually selected text
   " Why is this not a built-in Vim script function?!
   let [lnum1, col1] = getpos("'<")[1:2]
   let [lnum2, col2] = getpos("'>")[1:2]
@@ -357,6 +360,7 @@ function! SearchAndReplace()
 
   let input = join(lines, "\n")
 
+  " Execute bash script with selected text
   execute "!search-replace -i " . input
 endfunction
 
