@@ -347,7 +347,7 @@ command! -bar RangerChooser call RangeChooser()
 nnoremap <leader>r :<C-U>RangerChooser<CR>
 nnoremap <leader>b :ls<CR>:b<space>
 
-function! SearchAndReplace()
+function! GetVisuallySelectedText()
   " Why is this not a built-in Vim script function?!
   let [lnum1, col1] = getpos("'<")[1:2]
   let [lnum2, col2] = getpos("'>")[1:2]
@@ -355,9 +355,33 @@ function! SearchAndReplace()
   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][col1 - 1:]
 
-  let input = join(lines, "\n")
+  return join(lines, "\n")
+endfunction
+
+function! SearchAndReplaceVisuallySelected()
+  let input = GetVisuallySelectedText()
 
   execute "!search-replace -i " . input
 endfunction
 
-xnoremap gr :call SearchAndReplace()<CR>
+function! GitGrepVisuallySelectedText()
+  let input = GetVisuallySelectedText()
+
+  execute "tabe"
+  execute "set hidden"
+  execute "r!git grep -i " . input . " *"
+endfunction
+
+function! GrepVisuallySelectedText()
+  let input = GetVisuallySelectedText()
+
+  execute "tabe"
+  execute "set hidden"
+
+  execute "r!grep -irn " . input . " *"
+endfunction
+
+xnoremap <leader>r :call SearchAndReplaceVisuallySelected()<CR>
+xnoremap <leader>gg :call GitGrepVisuallySelectedText()<CR>
+xnoremap <leader>gr :call GrepVisuallySelectedText()<CR>
+
