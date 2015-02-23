@@ -159,3 +159,12 @@ alias iud="sudo ifdown wlan0 && sudo ifup wlan0"
 sprunge() {
     cat | curl -F 'sprunge=<-' http://sprunge.us
 }
+
+alias todo=t
+
+alias tp='t | grep -Poh "\@\w+" | sort | uniq -u'
+alias tproject=tp
+alias tc='t | grep -Poh "\+\w+" | sort | uniq -u'
+alias tcontext=tc
+
+alias t='t && tp | tr "\\n" " " && printf "\n" && tc | tr "\\n" " "'
