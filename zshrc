@@ -160,9 +160,9 @@ sprunge() {
     cat | curl -F 'sprunge=<-' http://sprunge.us
 }
 
-alias tp='t | grep -Poh "\@\w+" | sort | uniq -u'
+alias tp='t | grep -Poh "\+\w+" | sort | uniq -u'
 alias tproject=tp
-alias tc='t | grep -Poh "\+\w+" | sort | uniq -u'
+alias tc='t | grep -Poh "\@\w+" | sort | uniq -u'
 alias tcontext=tc
 
 alias todo='t && printf "\n\nprojects:\n" && tp | tr "\\n" " " && printf "\n" && printf "contexts:\n" && tc | tr "\\n" " "'
