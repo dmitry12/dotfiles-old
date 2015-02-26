@@ -166,3 +166,6 @@ alias tc='t | grep -Poh "\@\w+" | sort | uniq -u'
 alias tcontext=tc
 
 alias todo='t && printf "\n\nprojects:\n" && tp | tr "\\n" " " && printf "\n" && printf "contexts:\n" && tc | tr "\\n" " "'
+
+export KEYTIMEOUT=25
+bindkey -M viins jj vi-cmd-mode

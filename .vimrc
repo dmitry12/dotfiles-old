@@ -98,6 +98,7 @@ NeoBundle 'paradigm/SkyBison'
 NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'dmitry12/heroku-colorscheme'
+NeoBundle 'mustache/vim-mustache-handlebars'
 
 call neobundle#end()
 filetype plugin indent on
@@ -386,3 +387,10 @@ endfunction
 xnoremap <leader>r :call SearchAndReplaceVisuallySelected()<CR>
 xnoremap <leader>gg :call GitGrepVisuallySelectedText()<CR>
 xnoremap <leader>gr :call GrepVisuallySelectedText()<CR>
+let g:mustache_abbreviations = 1
+
+ino jj <esc>
+cno jj <c-c>
+"
+"ino <ESC> <NOP>
+"xno <ESC> <NOP>
