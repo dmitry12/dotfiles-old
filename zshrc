@@ -60,25 +60,6 @@ alias -g G='| grep -i '
 alias -g S='-sub '
 alias -g L='| less -Si'
 
-# open this extensions with vim
-alias -s php=vim
-alias -s html=vim
-alias -s phtml=vim
-alias -s css=vim
-alias -s less=vim
-alias -s js=vim
-alias -s rb=vim
-alias -s txt=vim
-alias -s md=vim
-alias -s srt=vim
-alias -s json=vim
-
-alias -s mp4=mplayer
-alias -s avi=mplayer
-alias -s mkv=mplayer
-
-alias -s zip=unzip
-#
 #hash -d d=~/Downloads
 hash -d cb=~/dev/repos/colourbox
 hash -d r=~/dev/repos
