@@ -384,13 +384,25 @@ function! GrepVisuallySelectedText()
   execute "r!grep -irn " . input . " *"
 endfunction
 
+function! FZFVisuallySelectedText()
+  let input = GetVisuallySelectedText()
+
+  execute ":FZF -q " . input
+endfunction
+
 xnoremap <leader>r :call SearchAndReplaceVisuallySelected()<CR>
 xnoremap <leader>gg :call GitGrepVisuallySelectedText()<CR>
 xnoremap <leader>gr :call GrepVisuallySelectedText()<CR>
+xnoremap <leader>fz :call FZFVisuallySelectedText()<CR>
+
 let g:mustache_abbreviations = 1
 
 ino jj <esc>
 cno jj <c-c>
+
+nnoremap <leader>gu :cd ..<CR>
+nnoremap <leader>gU :cd ~/dev/repos/colourbox<CR>
+
 "
 "ino <ESC> <NOP>
 "xno <ESC> <NOP>
