@@ -214,7 +214,6 @@ nnoremap <S-h> gT
 nnoremap <S-l> gt
 
 nnoremap gp `[v`]
-nnoremap <F10> gg<CR><C-w><C-w>gg<CR>:set scrollbind<CR>:diffthis<CR><C-w><C-w>:set scrollbind<CR>:diffthis<CR>
 
 autocmd FileType ruby setl sw=2 sts=2 et
 autocmd VimResized * :wincmd =
@@ -403,6 +402,19 @@ cno jj <c-c>
 nnoremap <leader>gu :cd ..<CR>
 nnoremap <leader>gU :cd ~/dev/repos/colourbox<CR>
 
+" Delay for neocomplete
+let g:neocomplete#enable_cursor_hold_i = 1
+let g:neocomplete#cursor_hold_i_time = 1000 " in msec
+
 "
 "ino <ESC> <NOP>
 "xno <ESC> <NOP>
+
+nnoremap <F10> :windo diffthis<CR>
+
+highlight DiffAdd cterm=none ctermfg=Black ctermbg=Green gui=none guifg=fg guibg=Blue
+highlight DiffDelete cterm=none ctermfg=Black ctermbg=Red gui=none guifg=fg guibg=Blue
+highlight DiffChange cterm=none ctermfg=Black ctermbg=Blue gui=none guifg=fg guibg=Blue
+highlight DiffText cterm=none ctermfg=Black ctermbg=Yellow gui=none guifg=bg guibg=White
+
+set diffopt+=iwhite
