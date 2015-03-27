@@ -418,3 +418,6 @@ highlight DiffChange cterm=none ctermfg=Black ctermbg=Blue gui=none guifg=fg gui
 highlight DiffText cterm=none ctermfg=Black ctermbg=Yellow gui=none guifg=bg guibg=White
 
 set diffopt+=iwhite
+
+nnoremap <F12> :SyntasticToggleMode<CR>
+
