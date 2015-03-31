@@ -99,6 +99,7 @@ NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'dmitry12/heroku-colorscheme'
 NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'vim-scripts/CmdlineComplete'
 
 call neobundle#end()
 filetype plugin indent on
