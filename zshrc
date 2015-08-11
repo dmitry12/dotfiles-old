@@ -7,6 +7,7 @@ fpath=(~/.zsh/comp $fpath)
 autoload -U compinit
 compinit
 
+
 if [ -f ~/.zsh/includes.zsh ]; then
 	source ~/.zsh/includes.zsh
 fi
@@ -68,7 +69,7 @@ hash -d db=~/Dropbox
 bindkey -v '\e.' insert-last-word # alt + .
 
 autoload edit-command-line
-zle -N edit-command-line
+#zle -N edit-command-line
 bindkey '^v' edit-command-line # Ctrl+X e
 
 # Colored man pages
@@ -81,19 +82,6 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 chpwd() ls # ls after each cd
-
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
-
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
 
 setopt RM_STAR_WAIT
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
