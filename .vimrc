@@ -86,7 +86,7 @@ NeoBundle 'tpope/vim-vividchalk'
 NeoBundleLazy 'embear/vim-localvimrc'
 NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundleLazy 'junegunn/fzf'
-NeoBundleLazy 'mru.vim'
+NeoBundle 'mru.vim'
 NeoBundleLazy 'Tagbar'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'adoy/vim-php-refactoring-toolbox'
@@ -190,8 +190,7 @@ nnoremap <leader>ul :Unite -start-insert line<CR>
 
 "nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
-"TODO Change grep -v to find . -prune -name
-nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \| grep -v git \| grep -v node_modules \| grep -v vendor \| grep -v Zend', 'sink': 'e' })<CR>
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . -type d \( -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o ./public \) -prune -o -print', 'sink': 'e' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
