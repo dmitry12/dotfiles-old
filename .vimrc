@@ -190,7 +190,7 @@ nnoremap <leader>ul :Unite -start-insert line<CR>
 
 "nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
 
-nnoremap <leader><leader> :call fzf#run({ 'source': 'find . -type d \( -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o ./public \) -prune -o -print', 'sink': 'e' })<CR>
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . -type d \( -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o -path ./public \) -prune -o -print', 'sink': 'e' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
