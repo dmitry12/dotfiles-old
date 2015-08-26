@@ -81,7 +81,7 @@ NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'snipMate'
-NeoBundleLazy 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundleLazy 'embear/vim-localvimrc'
 NeoBundle 'stephpy/vim-php-cs-fixer'
@@ -95,11 +95,13 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
 NeoBundleLazy 'tmhedberg/matchit'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'paradigm/SkyBison'
-NeoBundle 'chilicuil/vim-sprunge'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'dmitry12/heroku-colorscheme'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'vim-scripts/CmdlineComplete'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'bolasblack/csslint.vim'
+NeoBundle 'janko-m/vim-test'
 
 call neobundle#end()
 filetype plugin indent on
@@ -421,3 +423,4 @@ set diffopt+=iwhite
 
 nnoremap <F12> :SyntasticToggleMode<CR>
 
+let g:CSSLint_FileTypeList = ['css', 'less']
