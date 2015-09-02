@@ -56,6 +56,12 @@
 "tmux copy-mode"
    m:0x2 + c:66
 
+"setxkbmap ru && xmodmap ~/.Xmodmap"
+  F2
+
+"setxkbmap us && xmodmap ~/.Xmodmap"
+  F3
+
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4
