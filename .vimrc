@@ -97,9 +97,15 @@ NeoBundle 'vim-scripts/CmdlineComplete'
 NeoBundleLazy 'Tagbar'
 NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'fugitive.vim'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'bolasblack/csslint.vim'
+NeoBundle 'janko-m/vim-test'
+NeoBundle 'scrooloose/nerdtree'
 
 "Colors
 NeoBundle 'dmitry12/heroku-colorscheme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'reedes/vim-colors-pencil'
 
 "Language specific plugins/Colors for extensions
 NeoBundle 'mxw/vim-jsx'
@@ -107,6 +113,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'godlygeek/tabular'
 
 call neobundle#end()
 filetype plugin indent on
@@ -116,7 +123,10 @@ NeoBundleCheck
 if $DISPLAY == ""
     "When running without X
 else
+    "set background=dark
+    colorscheme default
     colorscheme heroku-terminal
+
 "   colorscheme desert
 endif
 
@@ -163,3 +173,14 @@ let g:syntastic_quiet_messages = {}
 
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = "-n  --tab_width=4"
+
+nnoremap <Leader>yu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/__tests__/unit", ""), "\.es", "\.js", "")<CR> <CR>
+
+nnoremap <Leader>tu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/unit", ""), "\.php", "Test.php", "")<CR> <CR>
+nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/integration", ""), "\.php", "Test.php", "")<CR> <CR>
+nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
+
+let NERDTreeIgnore = ['\.tmp.js$']
+nnoremap <leader>a :NERDTree %:h<CR>
+
+nnoremap <C-[> :NERDTreeToggle<CR>
