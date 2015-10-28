@@ -102,6 +102,13 @@ NeoBundle 'vim-scripts/CmdlineComplete'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'bolasblack/csslint.vim'
 NeoBundle 'janko-m/vim-test'
+NeoBundle 'neilagabriel/vim-geeknote'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'othree/html5.vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -184,15 +191,7 @@ nnoremap <leader>sh :set hidden!<CR>:set hidden?<CR>
 nnoremap <leader>gs :tabe<CR>:set hidden<CR>:r!git status<CR>
 nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i<space>
 
-nnoremap <leader>m :Unite -start-insert file_mru<CR>
-nnoremap <leader>ub :Unite -start-insert buffer<CR>
-nnoremap <leader>ur :Unite -start-insert register<CR>
-nnoremap <leader>ul :Unite -start-insert line<CR>
-
-
-"nnoremap <leader><leader> :Unite -start-insert -ignorecase file_rec/git file_mru buffer register line<CR>
-
-nnoremap <leader><leader> :call fzf#run({ 'source': 'find . -type d \( -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o -path ./public \) -prune -o -print', 'sink': 'e' })<CR>
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \( -name "*.tmp.js" -o -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./coverage -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o -path ./public \) -prune -o -print', 'sink': 'e' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -424,3 +423,22 @@ set diffopt+=iwhite
 nnoremap <F12> :SyntasticToggleMode<CR>
 
 let g:CSSLint_FileTypeList = ['css', 'less']
+
+let MRU_Exclude_Files = '__.*'
+
+
+" Snippets are separated from the engine. Add this if you want them:
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let NERDTreeIgnore = ['\.tmp.js$']
+nnoremap <leader>a :NERDTree %:h<CR>
+
+set foldmethod=indent
+set foldlevelstart=2
