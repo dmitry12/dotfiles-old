@@ -6,6 +6,12 @@ endsnippet
 
 snippet test "Testing boilerplate"
 define(['/base`!p snip.rv = path.replace("Test.es", ".es").replace(".", "", 1).replace("/home/dmitry/dev/repos/colourbox", "").replace("/tests-js/unit", "")`'], (`!p snip.rv = fn.replace("Test.es", "")`) => {
+    var `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
+
+    beforeEach(() => {
+        `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]` = new `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
+    });
+
     describe('what test does', function() {
         it('should do something', function() {
             expect(true).toBe(false);
