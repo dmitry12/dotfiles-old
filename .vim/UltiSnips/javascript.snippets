@@ -1,0 +1,17 @@
+snippet define "Requirejs define"
+define([], () => {
+$0
+});
+endsnippet
+
+snippet test "Testing boilerplate"
+define(['/base`!p snip.rv = path.replace("Test.es", ".es").replace(".", "", 1).replace("/home/dmitry/dev/repos/colourbox", "").replace("/tests-js/unit", "")`'], (`!p snip.rv = fn.replace("Test.es", "")`) => {
+    describe('what test does', function() {
+        it('should do something', function() {
+            expect(true).toBe(false);
+            $0
+        });
+    });
+});
+endsnippet
+
