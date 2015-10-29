@@ -1,6 +1,12 @@
 snippet define "Requirejs define"
 define([], () => {
-$0
+    class `!p snip.rv = fn.replace(".es", "")` {
+        make() {
+            console.log('work');
+        }
+    }
+
+    return `!p snip.rv = fn.replace(".es", "")`;
 });
 endsnippet
 
@@ -9,7 +15,7 @@ define(['/base`!p snip.rv = path.replace("Test.es", ".es").replace(".", "", 1).r
     var `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
 
     beforeEach(() => {
-        `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]` = new `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
+        `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]` = new `!p snip.rv = fn.replace("Test.es", "")`();
     });
 
     describe('what test does', function() {
