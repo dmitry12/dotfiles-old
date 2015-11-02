@@ -1,25 +1,37 @@
+global !p
+def cur_filename_without_extention(extention):
+	return fn.replace(extention, "")
+def cur_filename_for_file_to_test():
+	return path.replace("Test.es", ".es").replace(".", "", 1).replace("/home/dmitry/dev/repos/colourbox", "").replace("/tests-js/unit", "")
+def cur_class_variable_name():
+	return fn[0].lower() + fn.replace("Test.es", "")[1:];
+def cur_classname():
+	return fn.replace("Test.es", "")
+
+endglobal
+
 snippet define "Requirejs define"
 define([], () => {
-    class `!p snip.rv = fn.replace(".es", "")` {
+    class `!p snip.rv = cur_filename_without_extention(".es")` {
         make() {
             console.log('work');
         }
     }
 
-    return `!p snip.rv = fn.replace(".es", "")`;
+    return `!p snip.rv = cur_filename_without_extention(".es")`;
 });
 endsnippet
 
 snippet test "Testing boilerplate"
-define(['/base`!p snip.rv = path.replace("Test.es", ".es").replace(".", "", 1).replace("/home/dmitry/dev/repos/colourbox", "").replace("/tests-js/unit", "")`'], (`!p snip.rv = fn.replace("Test.es", "")`) => {
-    var `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
+define(['/base`!p snip.rv = cur_filename_for_file_to_test()`'], (`!p snip.rv = cur_classname()`) => {
+    var `!p snip.rv = cur_class_variable_name()`;
 
     beforeEach(() => {
-        `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]` = new `!p snip.rv = fn.replace("Test.es", "")`();
+        `!p snip.rv = cur_class_variable_name()` = new `!p snip.rv = cur_classname()`();
     });
 
-    describe('what test does', function() {
-        it('should do something', function() {
+    describe('what test does', () => {
+        it('should do something', () => {
             expect(true).toBe(false);
             $0
         });
@@ -29,13 +41,10 @@ endsnippet
 
 snippet testmock "Testing boilerplate"
 define(['Squire'], () => {
-    var `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`;
-
-    beforeEach(() => {
-    });
+    var `!p snip.rv = cur_class_variable_name()`;
 
     var injector;
-    var `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`Path = '/base`!p snip.rv = path.replace("Test.es", ".es").replace(".", "", 1).replace("/home/dmitry/dev/repos/colourbox", "").replace("/tests-js/unit", "")`';
+    var `!p snip.rv = cur_class_variable_name()`Path = '/base`!p snip.rv = cur_filename_for_file_to_test()`';
 
     beforeEach(() => {
         injector = new Squire();
@@ -47,14 +56,14 @@ define(['Squire'], () => {
 
     function setUpTypeDetector(cb) {
         injector.mock('Stripe', {})
-        .require([`!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`Path], (`!p snip.rv = fn.replace("Test.es", "")`) => {
-            `!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]` = new `!p snip.rv = fn.replace("Test.es", "")`();
-            cb(`!p snip.rv = fn[0].lower() + fn.replace("Test.es", "")[1:]`);
+        .require([`!p snip.rv = cur_class_variable_name()`Path], (`!p snip.rv = cur_classname()`) => {
+            `!p snip.rv = cur_class_variable_name()` = new `!p snip.rv = cur_classname()`();
+            cb(`!p snip.rv = cur_class_variable_name()`);
         });
     }
 
-    describe('what test does', function() {
-        it('should do something', function() {
+    describe('what test does', () => {
+        it('should do something', () => {
             expect(true).toBe(false);
             $0
         });
