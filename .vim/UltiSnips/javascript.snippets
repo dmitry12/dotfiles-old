@@ -40,7 +40,7 @@ define(['/base`!p snip.rv = cur_filename_for_file_to_test()`'], (`!p snip.rv = c
 endsnippet
 
 snippet testmock "Testing boilerplate"
-define(['Squire'], () => {
+define(['Squire'], (Squire) => {
     var `!p snip.rv = cur_class_variable_name()`;
 
     var injector;
@@ -54,7 +54,7 @@ define(['Squire'], () => {
         injector.remove();
     });
 
-    function setUpTypeDetector(cb) {
+    function setUp`!p snip.rv = cur_classname()`(cb) {
         injector.mock('Stripe', {})
         .require([`!p snip.rv = cur_class_variable_name()`Path], (`!p snip.rv = cur_classname()`) => {
             `!p snip.rv = cur_class_variable_name()` = new `!p snip.rv = cur_classname()`();
@@ -63,9 +63,11 @@ define(['Squire'], () => {
     }
 
     describe('what test does', () => {
-        it('should do something', () => {
-            expect(true).toBe(false);
-            $0
+        it('should do something', (done) => {
+            setUp`!p snip.rv = cur_classname()`((`!p snip.rv = cur_class_variable_name()`) => {
+                expect(true).toBe(false);
+                done();
+            });
         });
     });
 });
