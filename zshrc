@@ -56,7 +56,7 @@ alias gn='geeknote'
 alias fzf="$HOME/.vim/bundle/fzf/fzf"
 alias se='source env.sh'
 
-alias -g C="| tr '\n' ' ' |xclip -in -selection clipboard"
+alias -g C="| tr '\n' ' ' | xclip -in -selection clipboard"
 alias -g G='| grep -i '
 alias -g S='-sub '
 alias -g L='| less -Si'
