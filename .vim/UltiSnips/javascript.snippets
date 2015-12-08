@@ -72,3 +72,35 @@ define(['Squire'], (Squire) => {
     });
 });
 endsnippet
+
+snippet reactc "React Component"
+define(['react'], (React) => {
+    class `!p snip.rv = cur_filename_without_extention(".jsx")` extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                <div>Component</div>
+            )
+        }
+    }
+
+    return `!p snip.rv = cur_filename_without_extention(".jsx")`;
+});
+endsnippet
+
+snippet itt "it should test"
+it('should ${0}', (done) => {
+    done();
+});
+endsnippet
+
+snippet clpp "console log with pretty print"
+console.log(JSON.stringify(${1}, null, 2));
+endsnippet
+
+snippet cl
+console.log(${1});
+endsnippet
