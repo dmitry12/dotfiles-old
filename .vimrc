@@ -80,8 +80,7 @@ NeoBundle 'surround.vim'
 NeoBundle 'fugitive.vim'
 NeoBundle 'Tabmerge'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'snipMate'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundleLazy 'embear/vim-localvimrc'
 NeoBundle 'stephpy/vim-php-cs-fixer'
@@ -109,6 +108,8 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'airblade/vim-rooter'
+NeoBundle 'tpope/vim-sleuth'
 
 call neobundle#end()
 filetype plugin indent on
@@ -238,7 +239,9 @@ highlight GitGutterChangeDefault ctermfg=3 ctermbg=0 guifg=#bbbb00 guibg=Grey
 highlight GitGutterDeleteDefault ctermfg=1 ctermbg=0 guifg=#ff2222 guibg=Grey
 highlight GitGutterChangeDeleteDefault ctermfg=1 ctermbg=0 guifg=#ff2222 guibg=Grey
 
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jsrc']
+"autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_quiet_messages = {}
@@ -249,6 +252,8 @@ let g:syntastic_php_phpcs_args = "-n  --tab_width=4"
 nnoremap <Leader>tu :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/unit", ""), "\.php", "Test.php", "")<CR> <CR>
 nnoremap <Leader>ti :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/integration", ""), "\.php", "Test.php", "")<CR> <CR>
 nnoremap <Leader>td :vs <C-R>=substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests/database", ""), "\.php", "Test.php", "")<CR> <CR>
+
+nnoremap <Leader>fu :vs <C-R>=substitute(substitute(substitute(expand("%:p"), "\/colourbox", "\/colourbox\/tests-js/unit", ""), "\\.es", "Test.es", ""), "\/home\/dmitry\/dev\/repos\/colourbox", ".", "")<CR> <CR>
 
 nnoremap Q nop
 "
@@ -390,7 +395,7 @@ function! FZFVisuallySelectedText()
   execute ":FZF -q " . input
 endfunction
 
-xnoremap <leader>r :call SearchAndReplaceVisuallySelected()<CR>
+xnoremap <leader>ra :call SearchAndReplaceVisuallySelected()<CR>
 xnoremap <leader>gg :call GitGrepVisuallySelectedText()<CR>
 xnoremap <leader>gr :call GrepVisuallySelectedText()<CR>
 xnoremap <leader>fz :call FZFVisuallySelectedText()<CR>
@@ -440,5 +445,9 @@ let g:UltiSnipsEditSplit="vertical"
 let NERDTreeIgnore = ['\.tmp.js$']
 nnoremap <leader>a :NERDTree %:h<CR>
 
-set foldmethod=indent
-set foldlevelstart=2
+"set foldmethod=indent
+"set foldlevelstart=2
+
+nnoremap <leader>cwd :cd %:h<CR>
+
+let g:rooter_manual_only = 1 " To stop vim-rooter changing directory automatically
