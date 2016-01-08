@@ -110,6 +110,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'benmills/vimux'
 
 call neobundle#end()
 filetype plugin indent on
@@ -226,6 +227,7 @@ nmap Y y$
 "nnoremap S :wa<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
 nnoremap S :w<CR>:!sync<CR><CR>
 nnoremap <leader>S :w<CR>:!sync<CR><CR>:!reload-browser<CR><CR>:!xdotool mousemove 2318 7 click 1<CR><CR>
+nnoremap S :w<CR>:call VimuxRunCommand('~/bin/sync')<CR><CR>
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
