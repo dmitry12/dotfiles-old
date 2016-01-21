@@ -53,8 +53,8 @@
 "amixer set Master toggle"
    XF86AudioMute
 
-"tmux copy-mode"
-   m:0x2 + c:66
+# "tmux copy-mode"
+#    m:0x2 + c:66
 
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
