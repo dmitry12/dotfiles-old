@@ -111,6 +111,20 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'benmills/vimux'
+NeoBundle 'tommcdo/vim-exchange'
+"NeoBundle 'gorodinskiy/vim-coloresque'
+NeoBundle 'mohitleo9/vim-fidget',{
+    \ 'build' : {
+    \    'unix' : 'npm install',
+    \    'mac' : 'npm install',
+    \ },
+\}
+NeoBundle 'ternjs/tern_for_vim',{
+    \ 'build' : {
+    \    'unix' : 'npm install',
+    \    'mac' : 'npm install',
+    \ },
+\}
 
 call neobundle#end()
 filetype plugin indent on
@@ -136,8 +150,8 @@ endif
 let g:tmux_navigator_no_mappings = 1
 
 "Blinking cursor in insert mode (Tmux support)
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+"let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 "Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -453,3 +467,6 @@ nnoremap <leader>a :NERDTree %:h<CR>
 nnoremap <leader>cwd :cd %:h<CR>
 
 let g:rooter_manual_only = 1 " To stop vim-rooter changing directory automatically
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+nnoremap <leader>js :VimFidget<CR>
