@@ -3,10 +3,10 @@
 xbindkeys
 
 # Disable caps lock
-#setxkbmap -option ctrl:nocaps
+setxkbmap -option ctrl:nocaps
 
 xmodmap .Xmodmap
-
+xrdb -merge ~/.Xdefaults
 
 xrandr --output LVDS-1 --mode 1920x1200 --pos 1920x0 --rotate normal --output DVI-I-1 --mode 1920x1080 --pos 0x0 --rotate normal
 nitrogen --restore
