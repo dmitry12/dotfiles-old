@@ -1,24 +1,24 @@
 ! xrdb -merge ~/.Xdefaults
 
-URxvt.cursorColor: #ffffff
-URxvt.foreground: #0000FF
-URxvt.background: #000000
-URxvt.color0:  #000000
-URxvt.color8:  #555753
-URxvt.color1:  #cc0000
-URxvt.color9:  #EF2929
-URxvt.color2:  #4E9A06
-URxvt.color10: #8AE234
-URxvt.color3:  #C4A000
-URxvt.color11: #FCE94F
-URxvt.color4:  #3465A4
-URxvt.color12: #739FCF
-URxvt.color5:  #75507B
-URxvt.color13: #AD7FA8
-URxvt.color6:  #06989A
-URxvt.color14: #34E2E2
-URxvt.color7:  #D3D7CF
-URxvt.color15: #EEEEEC
+urxvt*foreground: white
+urxvt*background: black
+
+*color0:  #2E3436
+*color1:  #a40000
+*color2:  #4E9A06
+*color3:  #C4A000
+*color4:  #3465A4
+*color5:  #75507B
+*color6:  #ce5c00
+*color7:  #babdb9
+*color8:  #555753
+*color9:  #EF2929
+*color10: #8AE234
+*color11: #FCE94F
+*color12: #729FCF
+*color13: #AD7FA8
+*color14: #fcaf3e
+*color15: #EEEEEC
 
 ! TAMZEN
 URxvt.font:              -*-terminus-medium-*-*-*-16*-*-*-*-*-*-*
@@ -45,4 +45,3 @@ URxvt.perl-ext-common:  default,clipboard,matcher
 URxvt.iso14755 : false
 
 URxvt.transparent: true
-URxvt.fading: 10
