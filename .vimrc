@@ -470,3 +470,6 @@ let g:rooter_manual_only = 1 " To stop vim-rooter changing directory automatical
 
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 nnoremap <leader>js :VimFidget<CR>
+
+"When using filesystem autocomplete, first cd to relative folder to file and then autocomplete
+inoremap <C-X><C-F> <ESC>:cd %:h<CR>a<C-X><C-F>
