@@ -73,6 +73,33 @@ define(['Squire'], (Squire) => {
 });
 endsnippet
 
+snippet testjquery "Testing jquery"
+define(['/base`!p snip.rv = cur_filename_for_file_to_test()`'], (`!p snip.rv = cur_classname()`) => {
+    var `!p snip.rv = cur_class_variable_name()`;
+
+    beforeEach(() => {
+        `!p snip.rv = cur_class_variable_name()` = new `!p snip.rv = cur_classname()`();
+    });
+
+    jasmine.getJSONFixtures().fixturesPath = '// TODO make fixture path based on current test path + fixture folder';
+
+    describe('what test doest', () => {
+        it('should do something', () => {
+            //var fixture = getJSONFixture('something');
+
+            spyOn( jQuery, 'ajax' ).and.callFake((params) => { 
+                params.success(fixture); 
+            });
+
+            `!p snip.rv = cur_class_variable_name()`.ajaxMethod().then((data) => {
+                expect(JSON.stringify(data)).toBe(JSON.stringify(['something']));
+            });
+
+            done();
+        });
+});
+endsnippet
+
 snippet reactc "React Component"
 define(['react'], (React) => {
     class `!p snip.rv = cur_filename_without_extention(".jsx")` extends React.Component {
@@ -103,4 +130,30 @@ endsnippet
 
 snippet cl
 console.log(${1});
+endsnippet
+
+snippet rcc
+import React from 'react';
+
+export default class `!p snip.rv = cur_filename_without_extention(".jsx")` extends React.Component {
+    constructor(props) {
+		super(props);
+    }
+
+    render() {
+        return (
+        <div>
+            Stuff
+        </div>
+        )
+    }
+}
+endsnippet
+
+snippet rcs
+import React from 'react';
+
+export default (props) => (
+    <div>Stateless component</div>
+);
 endsnippet
