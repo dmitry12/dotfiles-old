@@ -88,7 +88,7 @@ NeoBundleLazy 'junegunn/fzf'
 NeoBundle 'mru.vim'
 NeoBundleLazy 'Tagbar'
 NeoBundle 'groenewege/vim-less'
-NeoBundle 'adoy/vim-php-refactoring-toolbox'
+"NeoBundle 'adoy/vim-php-refactoring-toolbox'
 NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'Shougo/neocomplete.vim'
 NeoBundleLazy 'tmhedberg/matchit'
@@ -473,3 +473,10 @@ nnoremap <leader>js :VimFidget<CR>
 
 "When using filesystem autocomplete, first cd to relative folder to file and then autocomplete
 inoremap <C-X><C-F> <ESC>:cd %:h<CR>a<C-X><C-F>
+function! NpmSearch()
+    let repoName = substitute(matchstr(getline('.'), "'.*'"), "'", '', 'g')
+
+    execute "!chromium https://www.npmjs.com/package/" . repoName
+endfunction
+
+nnoremap <leader>npm :call NpmSearch()<CR>
