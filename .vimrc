@@ -1,3 +1,4 @@
+set encoding=utf8
 sy on
 set nu
 set t_Co=256
@@ -109,7 +110,7 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
-NeoBundle 'tpope/vim-sleuth'
+"NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'benmills/vimux'
 NeoBundle 'tommcdo/vim-exchange'
 "NeoBundle 'gorodinskiy/vim-coloresque'
@@ -207,7 +208,7 @@ nnoremap <leader>sh :set hidden!<CR>:set hidden?<CR>
 nnoremap <leader>gs :tabe<CR>:set hidden<CR>:r!git status<CR>
 nnoremap <leader>gg :tabe<CR>:set hidden<CR>:r!git grep -i<space>
 
-nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \( -name "*.tmp.js" -o -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./coverage -o -path ./vendor -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o -path ./public \) -prune -o -print', 'sink': 'e' })<CR>
+nnoremap <leader><leader> :call fzf#run({ 'source': 'find . \( -name "*.tmp.js" -o -path ./node_modules -o -path ./.git -o -path ./library/vendor -o -path ./coverage -o -path ./vendor -o -path ./public-src/skyfish/react/components/Reuse/node_modules -o -path ./private/node_modules -o -path ./public/js/bower_components -o -path ./bower_components -o -path ./public \) -prune -o -print', 'sink': 'e' })<CR>
 
 "Ctrl+hjkl tmux support
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -473,3 +474,13 @@ nnoremap <leader>js :VimFidget<CR>
 
 "When using filesystem autocomplete, first cd to relative folder to file and then autocomplete
 inoremap <C-X><C-F> <ESC>:cd %:h<CR>a<C-X><C-F>
+
+augroup active_relative_number
+  au!
+  au BufEnter * :setlocal number
+  au WinEnter * :setlocal number
+  au BufLeave * :setlocal nonumber
+  au WinLeave * :setlocal nonumber
+augroup END
+
+set suffixesadd=,.es,.jsx
