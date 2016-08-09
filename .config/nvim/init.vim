@@ -21,6 +21,9 @@ set softtabstop=0
 set shiftwidth=4
 set tabstop=4
 
+"Open split windows from the right side
+set splitright
+
 set list
 
 "Always show status bar (Even when one file is openned)
@@ -32,11 +35,7 @@ set history=1000
 syntax sync minlines=256
 set synmaxcol=2048
 
-set clipboard=unnamed
-
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
+set clipboard=unnamed,unnamedplus
 
 if has('vim_starting')
   set nocompatible
@@ -205,3 +204,40 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+"http://vim.wikia.com/wiki/Git_grep
+func GitGrep(...)
+  let save = &grepprg
+  set grepprg=git\ grep\ -n\ $*
+  let s = 'grep'
+  for i in a:000
+    let s = s . ' ' . i
+  endfor
+  exe s
+  let &grepprg = save
+endfun
+command -nargs=? G call GitGrep(<f-args>)
+
+function! GetVisuallySelectedText()
+  " Stolen from http://stackoverflow.com/a/6271254/794380
+  " Why is this not a built-in Vim script function?!
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+
+  return join(lines, "\n")
+endfunction
+
+function! GitGrepVisuallySelectedText()
+  let input = GetVisuallySelectedText()
+
+  execute "vnew"
+  execute "set hidden"
+  execute "r!git grep -i " . input . " *"
+endfunction
+
+xnoremap <leader>G :call GitGrepVisuallySelectedText()<CR>
