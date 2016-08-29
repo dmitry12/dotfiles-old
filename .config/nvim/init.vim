@@ -37,6 +37,8 @@ set synmaxcol=2048
 
 set clipboard=unnamed,unnamedplus
 
+set mouse=""
+
 if has('vim_starting')
   set nocompatible
 
@@ -76,6 +78,9 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascr
 NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'groenewege/vim-less'
+
+NeoBundle 'lambdatoast/elm.vim'
+NeoBundle 'neomake/neomake'
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -176,6 +181,7 @@ let NERDTreeIgnore = ['\.tmp.js$']
 nnoremap <leader>a :NERDTree %:h<CR>
 
 nnoremap <leader>cwd :cd %:h<CR>
+nnoremap <leader>cd :Rooter<CR>
 
 let g:rooter_manual_only = 1 " To stop vim-rooter changing directory automatically
 
@@ -241,3 +247,17 @@ function! GitGrepVisuallySelectedText()
 endfunction
 
 xnoremap <leader>G :call GitGrepVisuallySelectedText()<CR>
+
+set suffixesadd=.es,.js,.jsx
+
+" Run NeoMake on read and write operations
+autocmd! BufReadPost,BufWritePost * Neomake
+
+" Disable inherited syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
