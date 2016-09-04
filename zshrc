@@ -31,7 +31,6 @@ bindkey '^N' history-search-forward
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	alias vim='mvim -v'
-	alias tmux='TERM=screen-256color-bce tmux'
 
 	function c () {
 		echo $1 | tr -d '\n' | reattach-to-user-namespace pbcopy
@@ -65,6 +64,7 @@ alias -g L='| less -Si'
 
 #hash -d d=~/Downloads
 hash -d cb=~/dev/repos/colourbox
+hash -d kw=~/dev/repos/kartweel/kartweel_web
 hash -d r=~/dev/repos
 hash -d db=~/Dropbox
 
@@ -91,7 +91,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 #. ~/.bin/z/z.sh
-eval "$(fasd --init auto)"
 
 GREP_COLOR="31" # Show red as match color
 
@@ -103,7 +102,6 @@ fkill() {
 	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
 
-alias tmux='TERM=screen-256color-bce tmux'
 alias vim='vim'
 
 alias vs="vim --servername colourbox"
