@@ -59,7 +59,6 @@ alias se='source env.sh'
 
 alias -g C="| tr '\n' ' ' | xclip -in -selection clipboard"
 alias -g G='| grep -i '
-alias -g S='-sub '
 alias -g L='| less -Si'
 
 #hash -d d=~/Downloads
@@ -102,7 +101,8 @@ fkill() {
 	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
 
-alias vim='vim'
+#alias tmux='TERM=screen-256color-bce tmux'
+alias vim='nvim'
 
 alias vs="vim --servername colourbox"
 alias vst="vim --servername colourbox --remote-tab"
@@ -138,3 +138,8 @@ alias todo='t && printf "\n\nprojects:\n" && tp | tr "\\n" " " && printf "\n" &&
 
 export KEYTIMEOUT=25
 bindkey -M viins jj vi-cmd-mode
+
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+      sed s/^..//) 2> /dev/null'

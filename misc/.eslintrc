@@ -1,0 +1,17 @@
+{
+    env: {
+      es6: true,
+      browser: true,
+      node: true,
+    },
+    parserOptions: {
+        sourceType: "module",
+        ecmaFeatures: {
+            jsx: true
+        }
+    },
+    rules: {
+        semi: [2, "always"],
+        "no-undef": "error"
+    }
+}
