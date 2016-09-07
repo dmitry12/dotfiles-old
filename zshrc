@@ -101,8 +101,8 @@ fkill() {
 	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
 
-#alias tmux='TERM=screen-256color-bce tmux'
-alias vim='nvim'
+#alias tmux='TERM=xterm-256color tmux'
+alias vim='export TERM=xterm-256color; nvim'
 
 alias vs="vim --servername colourbox"
 alias vst="vim --servername colourbox --remote-tab"
@@ -143,3 +143,7 @@ export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
+
+alias paci="sudo apt-get install"
+alias pacs="sudo apt-cache search"
+alias pacp="sudo apt-get purge"
