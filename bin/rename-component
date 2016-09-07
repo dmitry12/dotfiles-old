@@ -10,13 +10,14 @@ COMPONENT_PATH=$(find public-src -iname "$COMPONENT_NAME.*")
 NEW_COMPONENT_PATH=$(echo $COMPONENT_PATH | sed "s/$COMPONENT_NAME/$NEW_COMPONENT_NAME/")
 
 echo
-
+which grep
 echo -e "\e[92mI will move\e[0m"
-echo -e "\e[94m$COMPONENT_PATH\e[0m -> \e[94m$NEW_COMPONENT_PATH\e[0m"
+echo -e "\e$COMPONENT_PATH ->
+\e$NEW_COMPONENT_PATH" | grep --color=auto -P "$COMPONENT_NAME|$NEW_COMPONENT_NAME"
 
 echo
 
-echo -e "\e[92mI will rename\e[0m \e[94m$COMPONENT_NAME\e[0m -> \e[94m$NEW_COMPONENT_NAME\e[0m"
+echo -e "\e[92mI will rename\e[0m \e[31m$COMPONENT_NAME\e[0m -> \e[31m$NEW_COMPONENT_NAME\e[0m in the following files"
 git grep -w $1
 
 echo
