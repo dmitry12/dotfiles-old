@@ -1,0 +1,37 @@
+#!/bin/bash
+# Usage
+# $ rename-component OldName NewName
+
+COMPONENT_NAME=$1
+NEW_COMPONENT_NAME=$2
+
+COMPONENT_PATH=$(find public-src -iname "$COMPONENT_NAME.*")
+
+NEW_COMPONENT_PATH=$(echo $COMPONENT_PATH | sed "s/$COMPONENT_NAME/$NEW_COMPONENT_NAME/")
+
+echo
+
+echo -e "\e[92mI will move\e[0m"
+echo -e "\e[94m$COMPONENT_PATH\e[0m -> \e[94m$NEW_COMPONENT_PATH\e[0m"
+
+echo
+
+echo -e "\e[92mI will rename\e[0m \e[94m$COMPONENT_NAME\e[0m -> \e[94m$NEW_COMPONENT_NAME\e[0m"
+git grep -w $1
+
+echo
+
+read -n1 -r -p "Press space/enter if you want to continue" key
+
+if [ "$key" = '' ]; then
+    mv $COMPONENT_PATH $NEW_COMPONENT_PATH
+    git grep -lw $1 | xargs sed -i "s/$COMPONENT_NAME/$NEW_COMPONENT_NAME/g"
+
+    echo
+    echo "Done"
+    echo
+else
+    echo
+    echo "Aborting"
+    echo
+fi
