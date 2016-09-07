@@ -214,6 +214,8 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
+
 
 "http://vim.wikia.com/wiki/Git_grep
 func GitGrep(...)
@@ -265,3 +267,5 @@ let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
 
 let g:neomake_open_list=0
+
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
