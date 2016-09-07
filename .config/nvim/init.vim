@@ -39,14 +39,16 @@ set clipboard=unnamed,unnamedplus
 
 set mouse=""
 
-if has('vim_starting')
-  set nocompatible
-
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"NeoBundle Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath+=/home/dmitry/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('/home/dmitry/.vim/bundle'))
 
+" Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/syntastic'
