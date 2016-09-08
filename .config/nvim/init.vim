@@ -60,7 +60,7 @@ NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'mru.vim'
 NeoBundleLazy 'Tagbar'
 NeoBundleLazy 'scrooloose/nerdtree'
-NeoBundleLazy 'fugitive.vim'
+NeoBundle 'fugitive.vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'Tabmerge'
 NeoBundle 'surround.vim'
@@ -74,13 +74,15 @@ NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+
+NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'groenewege/vim-less'
 
 NeoBundle 'lambdatoast/elm.vim'
-NeoBundle 'neomake/neomake'
+"wait until this is merged https://github.com/neomake/neomake/pull/471
+NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -263,3 +265,4 @@ let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
 
 let g:neomake_open_list=0
+let g:neomake_place_signs_at_once = 1
