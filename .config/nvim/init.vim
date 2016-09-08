@@ -39,14 +39,16 @@ set clipboard=unnamed,unnamedplus
 
 set mouse=""
 
-if has('vim_starting')
-  set nocompatible
-
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"NeoBundle Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath+=/home/dmitry/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('/home/dmitry/.vim/bundle'))
 
+" Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/syntastic'
@@ -214,6 +216,8 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
+
 
 "http://vim.wikia.com/wiki/Git_grep
 func GitGrep(...)
@@ -266,3 +270,4 @@ let g:neomake_serialize_abort_on_error = 1
 
 let g:neomake_open_list=0
 let g:neomake_place_signs_at_once = 1
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
