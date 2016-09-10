@@ -254,7 +254,7 @@ endfunction
 
 xnoremap <leader>G :call GitGrepVisuallySelectedText()<CR>
 
-set suffixesadd=.es,.js,.jsx
+set suffixesadd=.es,.js,.jsx,.elm
 
 " Run NeoMake on read and write operations
 autocmd! BufReadPost,BufWritePost * Neomake
@@ -271,3 +271,5 @@ let g:neomake_serialize_abort_on_error = 1
 let g:neomake_open_list=0
 let g:neomake_place_signs_at_once = 1
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+
+autocmd Filetype elm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
