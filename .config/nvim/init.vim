@@ -85,6 +85,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'lambdatoast/elm.vim'
 "wait until this is merged https://github.com/neomake/neomake/pull/471
 NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
+NeoBundle 'benjie/neomake-local-eslint.vim'
 
 "NeoBundle 'paradigm/SkyBison'
 
