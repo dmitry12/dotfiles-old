@@ -20,7 +20,7 @@ fi
 
 unsetopt correct
 
-PATH='/usr/local/bin':$PATH
+PATH="/usr/local/bin:/home/$USER/bin":$PATH
 
 bindkey -v
 
