@@ -44,8 +44,8 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-set runtimepath+=/home/dmitry/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('/home/dmitry/.vim/bundle'))
+set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -56,7 +56,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dmitry12/heroku-colorscheme'
 
 NeoBundle 'bolasblack/csslint.vim'
-NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'vim-scripts/CmdlineComplete'
 NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'mru.vim'
@@ -85,7 +85,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'lambdatoast/elm.vim'
 "wait until this is merged https://github.com/neomake/neomake/pull/471
 NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
-NeoBundle 'benjie/neomake-local-eslint.vim'
+"NeoBundle 'benjie/neomake-local-eslint.vim'
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -96,11 +96,7 @@ NeoBundleCheck
 
 set background=dark
 
-if $DISPLAY == ""
-	"When running without X
-else
-	colorscheme heroku-terminal
-endif
+colorscheme heroku-terminal
 
 "Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -111,6 +107,7 @@ autocmd BufReadPost *
 "Less syntax support
 au BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.js set ft=javascript.jsx
 
 "Highlight all trailing white spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -275,3 +272,8 @@ let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 
 autocmd Filetype elm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 set includeexpr=substitute(v:fname,'\\.','/','g')
+
+
+highlight clear SignColumn
+
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
