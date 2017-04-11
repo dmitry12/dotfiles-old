@@ -56,7 +56,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dmitry12/heroku-colorscheme'
 
 NeoBundle 'bolasblack/csslint.vim'
-"NeoBundle 'SirVer/ultisnips'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'vim-scripts/CmdlineComplete'
 NeoBundleLazy 'sjl/gundo.vim'
 NeoBundleLazy 'mru.vim'
@@ -86,6 +86,8 @@ NeoBundle 'lambdatoast/elm.vim'
 "wait until this is merged https://github.com/neomake/neomake/pull/471
 NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
 "NeoBundle 'benjie/neomake-local-eslint.vim'
+"NeoBundle 'dmitry/vim-react-es6-snippets'
+NeoBundle 'dmitry12/vim-react-es6-snippets'
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -215,6 +217,8 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+
 
 
 "http://vim.wikia.com/wiki/Git_grep
@@ -245,7 +249,7 @@ endfunction
 function! GitGrepVisuallySelectedText()
   let input = GetVisuallySelectedText()
 
-  execute "vnew"
+  execute "tabe"
   execute "set hidden"
   execute "r!git grep -i " . input . " *"
 endfunction
@@ -277,3 +281,8 @@ set includeexpr=substitute(v:fname,'\\.','/','g')
 highlight clear SignColumn
 
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+nnoremap <leader>ff :!./node_modules/.bin/eslint --fix %
