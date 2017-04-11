@@ -44,8 +44,8 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-set runtimepath+=/home/dmitry/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('/home/dmitry/.vim/bundle'))
+set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -85,7 +85,9 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'lambdatoast/elm.vim'
 "wait until this is merged https://github.com/neomake/neomake/pull/471
 NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
-NeoBundle 'benjie/neomake-local-eslint.vim'
+"NeoBundle 'benjie/neomake-local-eslint.vim'
+"NeoBundle 'dmitry/vim-react-es6-snippets'
+NeoBundle 'dmitry12/vim-react-es6-snippets'
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -96,11 +98,7 @@ NeoBundleCheck
 
 set background=dark
 
-if $DISPLAY == ""
-	"When running without X
-else
-	colorscheme heroku-terminal
-endif
+colorscheme heroku-terminal
 
 "Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -111,6 +109,7 @@ autocmd BufReadPost *
 "Less syntax support
 au BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.js set ft=javascript.jsx
 
 "Highlight all trailing white spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -218,6 +217,8 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+
 
 
 "http://vim.wikia.com/wiki/Git_grep
@@ -248,7 +249,7 @@ endfunction
 function! GitGrepVisuallySelectedText()
   let input = GetVisuallySelectedText()
 
-  execute "vnew"
+  execute "tabe"
   execute "set hidden"
   execute "r!git grep -i " . input . " *"
 endfunction
@@ -275,3 +276,13 @@ let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 
 autocmd Filetype elm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 set includeexpr=substitute(v:fname,'\\.','/','g')
+
+
+highlight clear SignColumn
+
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+nnoremap <leader>ff :!./node_modules/.bin/eslint --fix %
