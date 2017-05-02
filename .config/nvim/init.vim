@@ -88,6 +88,8 @@ NeoBundle 'ivalkeen/neomake', {'rev': 'place-all-signs'}
 "NeoBundle 'benjie/neomake-local-eslint.vim'
 "NeoBundle 'dmitry/vim-react-es6-snippets'
 NeoBundle 'dmitry12/vim-react-es6-snippets'
+NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'carlitux/deoplete-ternjs', { 'build': { 'mac': 'npm install -g tern', 'unix': 'npm install -g tern' }}
 
 "NeoBundle 'paradigm/SkyBison'
 
@@ -286,3 +288,4 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 nnoremap <leader>ff :!./node_modules/.bin/eslint --fix %
+let g:deoplete#enable_at_startup = 1
